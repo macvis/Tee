@@ -4,30 +4,55 @@ package week1.homework.binaryNodeTree;
  * Created by macvi on 2017/4/4.
  */
 public class BinaryTreeNode {
-    private Object data;
+    private int data;
     private BinaryTreeNode left;
     private BinaryTreeNode right;
 
-    public Object getData() {
-        return data;
-    }
-    public void setData(Object data) {
+    private BinaryTreeNode(){}
+
+    public BinaryTreeNode(int data){
         this.data = data;
-    }
-    public BinaryTreeNode getLeft() {
-        return left;
-    }
-    public void setLeft(BinaryTreeNode left) {
-        this.left = left;
-    }
-    public BinaryTreeNode getRight() {
-        return right;
-    }
-    public void setRight(BinaryTreeNode right) {
-        this.right = right;
+        this.left = null;
+        this.right = null;
     }
 
-    public BinaryTreeNode insert(Object o){
-        return  null;
+    public void setData(int data){
+        BinaryTreeNode node = new BinaryTreeNode(data);
+        if(compareTo(data)){
+            if(this.left == null){
+                this.left = node;
+            }else{
+                this.left.setData(data);
+            }
+        }else{
+            if(this.right == null){
+                this.right = node;
+            }else{
+                this.right.setData(data);
+            }
+        }
     }
+
+    public int getData(){
+        return data;
+    }
+
+    private boolean compareTo(int d) {
+        System.out.println("data=" + this.data + ", d=" + d);
+        return this.data > d;
+    }
+
+    private StringBuffer dataStr = new StringBuffer();
+    private int index = 0;
+//    public String toString(BinaryTreeNode node) {
+//        while (node.left != null || node.right != null){
+//            dataStr.append(index + "层，数据=").append(node.data).append("|");
+//            if(node.left != null){
+//                dataStr.append(node.left.data)
+//            }
+//            index ++;
+//        }
+//
+//        return dataStr.toString();
+//    }
 }
