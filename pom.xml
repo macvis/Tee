@@ -16,6 +16,11 @@
         </developer>
     </developers>
 
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
     <!-- 阿里云镜像 -->
     <repositories>
         <repository>
