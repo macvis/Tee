@@ -16,7 +16,7 @@ public class Foo {
     }
 
     private void out(){
-        Goo g = new Goo() {};
+
     }
 
     abstract class Goo{
