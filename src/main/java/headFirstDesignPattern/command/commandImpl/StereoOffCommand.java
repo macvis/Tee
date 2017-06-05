@@ -1,7 +1,7 @@
-package headFirstDesignPattern.commandPattern.commandImpl;
+package headFirstDesignPattern.command.commandImpl;
 
-import headFirstDesignPattern.commandPattern.Command;
-import headFirstDesignPattern.commandPattern.domain.Stereo;
+import headFirstDesignPattern.command.Command;
+import headFirstDesignPattern.command.domain.Stereo;
 
 /**
  * Created by Tee.W on 2017/5/20.

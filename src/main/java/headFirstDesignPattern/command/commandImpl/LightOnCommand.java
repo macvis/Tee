@@ -1,7 +1,7 @@
-package headFirstDesignPattern.commandPattern.commandImpl;
+package headFirstDesignPattern.command.commandImpl;
 
-import headFirstDesignPattern.commandPattern.Command;
-import headFirstDesignPattern.commandPattern.domain.Light;
+import headFirstDesignPattern.command.Command;
+import headFirstDesignPattern.command.domain.Light;
 
 /**
  * Created by macvi on 2017/5/20.

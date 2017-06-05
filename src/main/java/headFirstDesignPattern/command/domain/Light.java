@@ -1,4 +1,4 @@
-package headFirstDesignPattern.commandPattern.domain;
+package headFirstDesignPattern.command.domain;
 
 /**
  * Created by macvi on 2017/5/20.

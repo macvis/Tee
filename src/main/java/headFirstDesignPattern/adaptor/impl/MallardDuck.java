@@ -1,6 +1,6 @@
-package headFirstDesignPattern.adaptorPattern.impl;
+package headFirstDesignPattern.adaptor.impl;
 
-import headFirstDesignPattern.adaptorPattern.IDuck;
+import headFirstDesignPattern.adaptor.IDuck;
 
 /**
  * Created by Tee on 2017/6/1.

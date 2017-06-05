@@ -1,4 +1,4 @@
-package headFirstDesignPattern.adaptorPattern.adaptor;
+package headFirstDesignPattern.adaptor.adaptor;
 
 import java.util.Enumeration;
 import java.util.Iterator;

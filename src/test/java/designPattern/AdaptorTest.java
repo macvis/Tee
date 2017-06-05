@@ -1,9 +1,9 @@
 package designPattern;
 
-import headFirstDesignPattern.adaptorPattern.IDuck;
-import headFirstDesignPattern.adaptorPattern.adaptor.TurkeyAdaptor;
-import headFirstDesignPattern.adaptorPattern.impl.MallardDuck;
-import headFirstDesignPattern.adaptorPattern.impl.WildTurkey;
+import headFirstDesignPattern.adaptor.IDuck;
+import headFirstDesignPattern.adaptor.adaptor.TurkeyAdaptor;
+import headFirstDesignPattern.adaptor.impl.MallardDuck;
+import headFirstDesignPattern.adaptor.impl.WildTurkey;
 
 /**
  * Created by Tee on 2017/6/2.

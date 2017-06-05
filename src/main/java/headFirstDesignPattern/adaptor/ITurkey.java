@@ -1,4 +1,4 @@
-package headFirstDesignPattern.adaptorPattern;
+package headFirstDesignPattern.adaptor;
 
 /**
  * Created by Tee on 2017/6/1.

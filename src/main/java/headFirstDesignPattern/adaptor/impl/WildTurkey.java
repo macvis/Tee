@@ -1,6 +1,6 @@
-package headFirstDesignPattern.adaptorPattern.impl;
+package headFirstDesignPattern.adaptor.impl;
 
-import headFirstDesignPattern.adaptorPattern.ITurkey;
+import headFirstDesignPattern.adaptor.ITurkey;
 
 /**
  * Created by Tee on 2017/6/1.

@@ -1,11 +1,11 @@
 package designPattern;
 
-import headFirstDesignPattern.commandPattern.RemoteControl;
-import headFirstDesignPattern.commandPattern.SimpleRemoteControl;
-import headFirstDesignPattern.commandPattern.commandImpl.*;
-import headFirstDesignPattern.commandPattern.domain.GarageDoor;
-import headFirstDesignPattern.commandPattern.domain.Light;
-import headFirstDesignPattern.commandPattern.domain.Stereo;
+import headFirstDesignPattern.command.RemoteControl;
+import headFirstDesignPattern.command.SimpleRemoteControl;
+import headFirstDesignPattern.command.commandImpl.*;
+import headFirstDesignPattern.command.domain.GarageDoor;
+import headFirstDesignPattern.command.domain.Light;
+import headFirstDesignPattern.command.domain.Stereo;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package headFirstDesignPattern.commandPattern;
+package headFirstDesignPattern.command;
 
 /**
  * 命令模式 - command接口

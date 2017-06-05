@@ -1,4 +1,4 @@
-package headFirstDesignPattern.commandPattern;
+package headFirstDesignPattern.command;
 
 /**
  * Created by Tee.W on 2017/5/20.
