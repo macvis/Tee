@@ -42,9 +42,11 @@ public abstract class MenuComponent {
         return null;
     }
 
-    public abstract CompositeIterator createIterator();
+    public CompositeIterator createIterator(){
+        return null;
+    }
 
-    class CompositeIterator implements Iterator{
+    static class CompositeIterator implements Iterator{
 
         Stack stack = new Stack();
 
