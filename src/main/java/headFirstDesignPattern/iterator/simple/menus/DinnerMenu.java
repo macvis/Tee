@@ -1,8 +1,7 @@
-package headFirstDesignPattern.iterator.items;
+package headFirstDesignPattern.iterator.simple.menus;
 
-import headFirstDesignPattern.iterator.Menu;
-import headFirstDesignPattern.iterator.MenuItem;
-import headFirstDesignPattern.iterator.Iterator;
+import headFirstDesignPattern.iterator.simple.Menu;
+import headFirstDesignPattern.iterator.simple.MenuItem;
 
 /**
  * Head First Design迭代器与组合模式的例子
@@ -53,7 +52,7 @@ public class DinnerMenu implements Menu {
         return menuItems;
     }
 
-    public Iterator iterator = new Iterator() {
+    public Menu.Iterator iterator = new Iterator() {
         MenuItem[] items = menuItems;
         int position = 0;
 
@@ -71,7 +70,7 @@ public class DinnerMenu implements Menu {
     };
 
     @Override
-    public Iterator getIterator() {
+    public Menu.Iterator getIterator() {
         return iterator;
     }
 }

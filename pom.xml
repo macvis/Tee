@@ -113,5 +113,12 @@
             <version>4.1.6.RELEASE</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
     </dependencies>
 </project>

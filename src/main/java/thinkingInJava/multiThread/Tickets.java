@@ -47,7 +47,9 @@ public class Tickets {
         @Override
         public void run() {
             while(count > 0){
-                System.out.println("name -> " + Thread.currentThread() + ", tickets count -> " + count + ", ThreadLocal -> " + ticket.getValue());
+                System.out.println("name -> " + Thread.currentThread() +
+                        ", tickets count -> " + count +
+                        ", ThreadLocal -> " + ticket.getValue());
                 ticket.setValue();
                 count --;
             }

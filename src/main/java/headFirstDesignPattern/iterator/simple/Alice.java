@@ -1,7 +1,7 @@
-package headFirstDesignPattern.iterator;
+package headFirstDesignPattern.iterator.simple;
 
-import headFirstDesignPattern.iterator.items.DinnerMenu;
-import headFirstDesignPattern.iterator.items.PancakeHouseMenu;
+import headFirstDesignPattern.iterator.simple.menus.DinnerMenu;
+import headFirstDesignPattern.iterator.simple.menus.PancakeHouseMenu;
 
 /**
  * The waitress
@@ -15,7 +15,7 @@ public class Alice {
      */
     public static void printMenu(){
         for(Menu menu : menus){
-            Iterator iter = menu.getIterator();
+            Menu.Iterator iter = menu.getIterator();
             while(iter.hasNext()){
                 System.out.println(iter.next());
             }
