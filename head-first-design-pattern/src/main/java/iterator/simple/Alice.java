@@ -1,7 +1,7 @@
-package headFirstDesignPattern.iterator.simple;
+package iterator.simple;
 
-import headFirstDesignPattern.iterator.simple.menus.DinnerMenu;
-import headFirstDesignPattern.iterator.simple.menus.PancakeHouseMenu;
+import iterator.simple.menus.DinnerMenu;
+import iterator.simple.menus.PancakeHouseMenu;
 
 /**
  * The waitress

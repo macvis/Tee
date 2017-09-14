@@ -1,4 +1,4 @@
-package thinkingInJava.multiThread.thinkingInJava.concurrency;
+package concurrency;
 
 import java.util.concurrent.TimeUnit;
 

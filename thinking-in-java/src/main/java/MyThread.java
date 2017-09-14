@@ -1,5 +1,3 @@
-package thinkingInJava.multiThread;
-
 /**
  * @author : 温友朝
  * @date : 2017/5/15

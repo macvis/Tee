@@ -1,5 +1,4 @@
-package lambda;
-
+import fun_interfaces.Fruit;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +16,6 @@ public class Demo {
 
         List<String> list = Arrays.asList("a", "b", "c", "d", "A", "B", "C", "D");
         list.sort(String::compareToIgnoreCase);
-
 
     }
 }

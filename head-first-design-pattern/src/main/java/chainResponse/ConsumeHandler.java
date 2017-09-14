@@ -1,4 +1,4 @@
-package headFirstDesignPattern.chainResponse;
+package chainResponse;
 
 /**
  * @author : 温友朝

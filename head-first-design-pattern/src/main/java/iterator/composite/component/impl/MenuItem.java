@@ -1,6 +1,6 @@
-package headFirstDesignPattern.iterator.composite.component.impl;
+package iterator.composite.component.impl;
 
-import headFirstDesignPattern.iterator.composite.component.MenuComponent;
+import iterator.composite.component.MenuComponent;
 
 /**
  * @author youchao.wen

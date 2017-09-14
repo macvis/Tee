@@ -1,6 +1,6 @@
-package headFirstDesignPattern.template.impl;
+package template.impl;
 
-import headFirstDesignPattern.template.templates.CaffeineBeverageWithHook;
+import template.templates.CaffeineBeverageWithHook;
 
 import java.util.Scanner;
 

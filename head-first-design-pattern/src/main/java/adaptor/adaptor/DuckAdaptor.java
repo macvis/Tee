@@ -1,7 +1,7 @@
-package headFirstDesignPattern.adaptor.adaptor;
+package adaptor.adaptor;
 
-import headFirstDesignPattern.adaptor.IDuck;
-import headFirstDesignPattern.adaptor.ITurkey;
+import adaptor.IDuck;
+import adaptor.ITurkey;
 
 /**
  * 火鸡适配器

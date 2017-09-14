@@ -1,4 +1,4 @@
-package thinkingInJava.multiThread.thinkingInJava.multiThreadExercise;
+package multiThreadExercise;
 
 /**
  * @author : 温友朝

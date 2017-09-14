@@ -1,4 +1,4 @@
-package headFirstDesignPattern.template.templates;
+package template.templates;
 
 /**
  * 抽象出的咖啡因类饮料方法，供子类实现

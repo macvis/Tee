@@ -1,6 +1,6 @@
-package headFirstDesignPattern.decorator.beverages;
+package decorator.beverages;
 
-import headFirstDesignPattern.decorator.Beverage;
+import decorator.Beverage;
 
 /**
  * @author : 温友朝

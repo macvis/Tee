@@ -1,7 +1,7 @@
-package headFirstDesignPattern.decorator.condiments;
+package decorator.condiments;
 
-import headFirstDesignPattern.decorator.Beverage;
-import headFirstDesignPattern.decorator.CondimentDecorator;
+import decorator.Beverage;
+import decorator.CondimentDecorator;
 
 /**
  * @author : 温友朝

@@ -1,5 +1,3 @@
-package thinkingInJava.multiThread.thinkingInJava;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

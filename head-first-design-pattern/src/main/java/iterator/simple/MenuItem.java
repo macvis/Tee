@@ -1,4 +1,4 @@
-package headFirstDesignPattern.iterator.simple;
+package iterator.simple;
 
 /**
  * Created by Tee on 2017/6/7.

@@ -1,6 +1,6 @@
-package headFirstDesignPattern.iterator.composite.component;
+package iterator.composite.component;
 
-import headFirstDesignPattern.iterator.composite.component.impl.Menu;
+import iterator.composite.component.impl.Menu;
 
 import java.util.Iterator;
 import java.util.Stack;
@@ -46,7 +46,7 @@ public abstract class MenuComponent {
         return null;
     }
 
-    static class CompositeIterator implements Iterator{
+    static class CompositeIterator implements Iterator {
 
         Stack stack = new Stack();
 

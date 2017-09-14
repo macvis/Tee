@@ -1,4 +1,4 @@
-package headFirstDesignPattern.command.domain;
+package command.domain;
 
 /**
  * Created by Tee.W on 2017/5/20.

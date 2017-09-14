@@ -1,6 +1,7 @@
-package headFirstDesignPattern.iterator.composite.waitress;
+package iterator.composite.waitress;
 
-import headFirstDesignPattern.iterator.composite.component.MenuComponent;
+
+import iterator.composite.component.MenuComponent;
 
 import java.util.Iterator;
 

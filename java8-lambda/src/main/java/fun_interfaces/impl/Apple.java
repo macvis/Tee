@@ -1,6 +1,6 @@
-package lambda.impl;
+package fun_interfaces.impl;
 
-import lambda.Fruit;
+import fun_interfaces.Fruit;
 
 /**
  * @author youchao.wen

@@ -1,6 +1,7 @@
-package headFirstDesignPattern.iterator.simple.test;
+package iterator.simple.test;
 
-import headFirstDesignPattern.iterator.simple.Alice;
+
+import iterator.simple.Alice;
 import org.junit.Test;
 
 /**

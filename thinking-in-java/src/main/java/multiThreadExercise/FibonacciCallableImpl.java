@@ -1,4 +1,4 @@
-package thinkingInJava.multiThread.thinkingInJava.multiThreadExercise;
+package multiThreadExercise;
 
 import java.util.ArrayList;
 import java.util.List;

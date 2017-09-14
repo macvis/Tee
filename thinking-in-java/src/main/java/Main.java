@@ -1,4 +1,3 @@
-package thinkingInJava.multiThread;
 
 /**
  * @author : 温友朝

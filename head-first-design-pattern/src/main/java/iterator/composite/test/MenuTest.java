@@ -1,9 +1,9 @@
-package headFirstDesignPattern.iterator.composite.test;
+package iterator.composite.test;
 
-import headFirstDesignPattern.iterator.composite.component.MenuComponent;
-import headFirstDesignPattern.iterator.composite.component.impl.Menu;
-import headFirstDesignPattern.iterator.composite.component.impl.MenuItem;
-import headFirstDesignPattern.iterator.composite.waitress.Waitress;
+import iterator.composite.component.MenuComponent;
+import iterator.composite.component.impl.Menu;
+import iterator.composite.component.impl.MenuItem;
+import iterator.composite.waitress.Waitress;
 
 /**
  * @author youchao.wen

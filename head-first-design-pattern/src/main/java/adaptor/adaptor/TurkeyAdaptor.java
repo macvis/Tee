@@ -1,7 +1,7 @@
-package headFirstDesignPattern.adaptor.adaptor;
+package adaptor.adaptor;
 
-import headFirstDesignPattern.adaptor.IDuck;
-import headFirstDesignPattern.adaptor.ITurkey;
+import adaptor.IDuck;
+import adaptor.ITurkey;
 
 /**
  * Created by Tee on 2017/6/1.

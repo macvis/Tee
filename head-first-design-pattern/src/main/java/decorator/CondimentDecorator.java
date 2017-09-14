@@ -1,4 +1,4 @@
-package headFirstDesignPattern.decorator;
+package decorator;
 
 /**
  * @author : 温友朝

@@ -1,5 +1,3 @@
-package thinkingInJava.multiThread.thinkingInJava;
-
 /**
  * Thinking in Java Page.654
  *

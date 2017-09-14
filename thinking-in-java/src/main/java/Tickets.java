@@ -1,5 +1,3 @@
-package thinkingInJava.multiThread;
-
 
 /**
  * @author youchao.wen

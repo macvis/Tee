@@ -1,4 +1,4 @@
-package lambda;
+package fun_interfaces;
 
 /**
  * Created by youchao.wen on 2017/8/9.

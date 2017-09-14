@@ -1,4 +1,4 @@
-package headFirstDesignPattern.template.templates;
+package template.templates;
 
 /**
  * Created by Tee on 2017/6/6.

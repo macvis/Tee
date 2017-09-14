@@ -1,6 +1,7 @@
-package headFirstDesignPattern.template.impl;
+package template.impl;
 
-import headFirstDesignPattern.template.templates.CaffeineBeverage;
+
+import template.templates.CaffeineBeverage;
 
 /**
  * Created by Tee on 2017/6/5.

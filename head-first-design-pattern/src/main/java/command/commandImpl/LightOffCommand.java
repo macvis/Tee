@@ -1,7 +1,8 @@
-package headFirstDesignPattern.command.commandImpl;
+package command.commandImpl;
 
-import headFirstDesignPattern.command.Command;
-import headFirstDesignPattern.command.domain.Light;
+
+import command.Command;
+import command.domain.Light;
 
 /**
  * Created by Tee.W on 2017/5/20.

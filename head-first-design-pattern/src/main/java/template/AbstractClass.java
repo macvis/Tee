@@ -1,4 +1,4 @@
-package headFirstDesignPattern.template;
+package template;
 
 /**
  * 模板方法类，一个概览性质的说明类

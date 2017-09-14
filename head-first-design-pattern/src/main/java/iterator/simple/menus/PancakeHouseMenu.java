@@ -1,7 +1,8 @@
-package headFirstDesignPattern.iterator.simple.menus;
+package iterator.simple.menus;
 
-import headFirstDesignPattern.iterator.simple.Menu;
-import headFirstDesignPattern.iterator.simple.MenuItem;
+
+import iterator.composite.component.impl.MenuItem;
+import iterator.simple.Menu;
 
 import java.util.ArrayList;
 

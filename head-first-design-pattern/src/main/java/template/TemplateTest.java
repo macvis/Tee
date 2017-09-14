@@ -1,8 +1,9 @@
-package headFirstDesignPattern.template;
+package template;
 
-import headFirstDesignPattern.template.impl.CoffeeWithHook;
-import headFirstDesignPattern.template.impl.Tea;
+
 import org.junit.Test;
+import template.impl.CoffeeWithHook;
+import template.impl.Tea;
 
 /**
  * Created by Tee on 2017/6/6.

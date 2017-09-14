@@ -1,7 +1,8 @@
-package headFirstDesignPattern.command.commandImpl;
+package command.commandImpl;
 
-import headFirstDesignPattern.command.Command;
-import headFirstDesignPattern.command.domain.GarageDoor;
+
+import command.Command;
+import command.domain.GarageDoor;
 
 /**
  * Created by Tee.W on 2017/5/20.
