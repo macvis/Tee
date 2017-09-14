@@ -17,10 +17,14 @@
         </developer>
     </developers>
     <modules>
+        <!-- head first 设计模式，原书中的部分教学代码 -->
         <module>head-first-design-pattern</module>
+        <!-- java编程思想，部分实战代码 -->
         <module>thinking-in-java</module>
         <module>redis-learning</module>
+        <!-- java8实战，书中的部分代码 -->
         <module>java8-lambda</module>
+        <!-- 瞎玩的代码 -->
         <module>main</module>
     </modules>
 
