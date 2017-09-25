@@ -19,21 +19,22 @@ public class NoQuarterState implements State {
 
     @Override
     public void insertQuarter() {
-
+        System.out.println("you inserted a Quarter");
+        machine.setState(GumballMachine.HAS_QUARTER_STATE);
     }
 
     @Override
     public void ejectQuarter() {
-
+        System.out.println("you have not inserted a Quarter yet");
     }
 
     @Override
     public void turnCrank() {
-
+        System.out.println("you turned, but there is no Quarter");
     }
 
     @Override
     public void dispense() {
-
+        System.out.println("you need to pay first");
     }
 }

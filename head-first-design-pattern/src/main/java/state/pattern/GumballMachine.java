@@ -1,9 +1,6 @@
 package state.pattern;
 
-import state.pattern.impl.HasQuarterState;
-import state.pattern.impl.NoQuarterState;
-import state.pattern.impl.SoldOutState;
-import state.pattern.impl.SoldState;
+import state.pattern.impl.*;
 
 /**
  * @author youchao.wen
@@ -14,6 +11,7 @@ public class GumballMachine {
     public static final State NO_QUARTER_STATE  = new NoQuarterState();
     public static final State SOLD_STATE        = new SoldState();
     public static final State SOLD_OUT_STATE    = new SoldOutState();
+    public static final State WINNER_STATE      = new WinnerState();
 
     State state = SOLD_OUT_STATE;
     public int count = 0;
@@ -42,6 +40,26 @@ public class GumballMachine {
 
     public void release(){
         System.out.println("a gumball is rolling out...");
-        if(count > 0) count--;
+        if(count > 0) {
+            count--;
+        }else{
+            this.setState(SOLD_OUT_STATE);
+        }
+    }
+
+    public void releaseTwoGumaballs(){
+        if(count > 2){
+            count -= 2;
+            System.out.println("2 gumballs is rolling out...");
+            this.setState(NO_QUARTER_STATE);
+        } else if(count == 2){
+            count -= 2;
+            System.out.println("2 gumballs is rolling out...");
+            System.out.println("gumballs sold out");
+            this.setState(SOLD_OUT_STATE);
+        }else if(count < 2){
+            System.out.println("oops, you can not get two gumballs due to only one left");
+            this.ejectQuarter();
+        }
     }
 }
