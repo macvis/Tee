@@ -26,6 +26,7 @@
         <module>java8-lambda</module>
         <!-- 瞎玩的代码 -->
         <module>main</module>
+        <module>java-concurrency-in-practice</module>
     </modules>
 
     <properties>
