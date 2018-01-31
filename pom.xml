@@ -26,7 +26,10 @@
         <module>java8-lambda</module>
         <!-- 瞎玩的代码 -->
         <module>main</module>
+        <!-- java并发编程实战 -->
         <module>java-concurrency-in-practice</module>
+        <!-- java8实战 -->
+        <module>java-8-in-action</module>
     </modules>
 
     <properties>
