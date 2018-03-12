@@ -96,3 +96,37 @@ public class LazyInitRace{
 ```
 上述例子中，如果同时有两个线程执行getInstance，那么A看到instance为空的同时，B也在调用getInstance方法，那么此时的instance是否为空，要取决于不可预测的时序，包括线程的调度方式，以及A需要花费多长时间来初始化ExpensiveObject并设置Instance。如果当B检查时，instance为空没那么在两次调用getInstance时可能会得到不同的结果  
 * 与大多数并发错误一样，竞态条件并不总是会产生错误，还需要某种不恰当的执行时序。
+* 原子操作：  
+假定有两个操作A和B，如果从执行A的线程来看，当另一个线程执行B时，要么将B全部执行完，要么完全不执行B，那么A和B对彼此来说是原子的。原子操作是指，对于访问同一个状态的所有操作(包括该操作本身)来说，这个操作是一个已原子方式执行的操作。
+
+```java
+//程序2.4
+@ThreadSafe
+public class CountingFactorizer implements Servlet{
+    private final AtomicLong count = new AtomicLong(0);
+    
+    public long getCount(){
+        return count.get();
+    }
+    
+    public void service(ServletRequest req, ServletResponse resp){
+        BigInteger i = extractFromRequest(req);
+        BigInteger[] factors = factor(i);
+        count.incrementAndGet();
+        encodeIntoResponse(resp, factors);
+    }
+}
+```
+AtomicLong能保证所有对计数器状态的访问操作都是原子的。
+
+####2.3.1 重入
+* 概念：  
+  当某个线程请求一个有其他线程持有的线程时，发出的请求线程就会阻塞。然而，由于内置的锁是可重入的，因此如果某个线程试图获得一个已经**由他自己持有**的锁，那么这个请求就会成功。
+* 重入，意味着获取锁的操作的粒度是"线程"而不是"调用"  
+  粒度：指的是一个方法内所包含的逻辑复杂度。若把一次调用视作一个逻辑，那么线程则具有多个逻辑，则粒度变大  
+  
+####2.4 用锁来保护状态
+* 锁能使其保护的代码路径以串行形式来访问，因此可以通过锁来构造一些协议以实现对共享状态的独占访问。  
+  串行访问：意味着多个线程**依次**以独占的方式访问对象，而不是并发访问  
+* 对于可能被多个线程同时访问的可变状态变量，在访问它时都需要持有同一个锁，在这种情况下，我们称状态变量是由这个锁保护的
+* 每个共享的和可变的变量都应该只由一个锁来保护，从而使维护人员知道是哪一个锁
