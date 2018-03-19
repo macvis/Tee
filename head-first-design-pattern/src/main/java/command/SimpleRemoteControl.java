@@ -6,13 +6,14 @@ package command;
 public class SimpleRemoteControl {
     Command slot;
 
-    public SimpleRemoteControl(){}
+    public SimpleRemoteControl() {
+    }
 
-    public void setCommand(Command cmd){
+    public void setCommand(Command cmd) {
         this.slot = cmd;
     }
 
-    public void pressButton(){
+    public void pressButton() {
         this.slot.execute();
     }
 }

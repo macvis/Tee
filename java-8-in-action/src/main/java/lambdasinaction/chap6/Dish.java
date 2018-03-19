@@ -34,7 +34,7 @@ public class Dish {
         return type;
     }
 
-    public enum Type { MEAT, FISH, OTHER }
+    public enum Type {MEAT, FISH, OTHER}
 
     @Override
     public String toString() {
@@ -42,7 +42,7 @@ public class Dish {
     }
 
     public static final List<Dish> menu =
-            asList( new Dish("pork", false, 800, Type.MEAT),
+            asList(new Dish("pork", false, 800, Type.MEAT),
                     new Dish("beef", false, 700, Type.MEAT),
                     new Dish("chicken", false, 400, Type.MEAT),
                     new Dish("french fries", true, 530, Type.OTHER),

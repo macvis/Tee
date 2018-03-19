@@ -32,26 +32,27 @@ public class GumballMachine {
      * 糖果库存
      */
     public int count = 0;
+
     /**
      * 构造器需要初始化糖果的数量作为库存。
      * 如果库存数量不为零的话，机器就会进入没有25分钱的状态(@NO_QUARTER)，即等待顾客投钱
      *
      * @param count
      */
-    public GumballMachine(int count){
+    public GumballMachine(int count) {
         this.count = count;
-        if(count > 0) state = NO_QUARTER;
+        if (count > 0) state = NO_QUARTER;
     }
 
     /**
      * 往机器投入25分钱
      */
-    public void insertQuarter(){
-        switch (state){
+    public void insertQuarter() {
+        switch (state) {
             /**
              * 机器一次只能接受一个25美分
              */
-            case HAS_QUARTER :
+            case HAS_QUARTER:
                 System.out.println("You can not insert another quarter");
                 break;
             /**
@@ -75,8 +76,8 @@ public class GumballMachine {
     /**
      * 退25美分
      */
-    public void ejectQuarter(){
-        switch (state){
+    public void ejectQuarter() {
+        switch (state) {
             case HAS_QUARTER:
                 System.out.println("return your quarter");
                 state = NO_QUARTER;
@@ -98,18 +99,18 @@ public class GumballMachine {
     /**
      * 转动曲柄
      */
-    public void turnCrank(){
-        switch (state){
+    public void turnCrank() {
+        switch (state) {
             /**
              * 已出售，但是如果再转动曲柄则不会再吐糖果出来
              */
-            case SOLD :
+            case SOLD:
                 System.out.println("Turning the crank twice doesn't get you another gumball");
                 break;
             /**
              * 没投币就想获取糖果，没门
              */
-            case NO_QUARTER :
+            case NO_QUARTER:
                 System.out.println("You turned but there is no Quarter");
                 break;
             /**
@@ -134,8 +135,8 @@ public class GumballMachine {
     /**
      * 糖果发放
      */
-    public void dispense(){
-        switch (state){
+    public void dispense() {
+        switch (state) {
             /**
              * 只有在SOLD状态才会吐出糖果
              */
@@ -144,7 +145,7 @@ public class GumballMachine {
                 count--;
                 state = NO_QUARTER;
                 System.out.println("gumball sold");
-                if(count == 0){
+                if (count == 0) {
                     System.out.println("oops, out of gumballs");
                     state = SOLD_OUT;
                 }
@@ -161,7 +162,7 @@ public class GumballMachine {
     @Override
     public String toString() {
         String stateStr = "";
-        switch (state){
+        switch (state) {
             case SOLD:
                 stateStr = "SOLD";
                 break;
@@ -177,7 +178,7 @@ public class GumballMachine {
             default:
                 break;
         }
-        return  "remain count -> " + count + ", " +
+        return "remain count -> " + count + ", " +
                 "current state -> " + stateStr;
     }
 }

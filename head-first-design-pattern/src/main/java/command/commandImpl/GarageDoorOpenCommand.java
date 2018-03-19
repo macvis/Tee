@@ -10,7 +10,7 @@ import command.domain.GarageDoor;
 public class GarageDoorOpenCommand implements Command {
     GarageDoor garageDoor;
 
-    public GarageDoorOpenCommand(GarageDoor garageDoor){
+    public GarageDoorOpenCommand(GarageDoor garageDoor) {
         this.garageDoor = garageDoor;
     }
 

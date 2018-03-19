@@ -9,18 +9,18 @@ import java.util.concurrent.TimeUnit;
 public class SimpleDaemons implements Runnable {
     @Override
     public void run() {
-        try{
-            while(true){
+        try {
+            while (true) {
                 TimeUnit.MILLISECONDS.sleep(100);
                 System.out.println(Thread.currentThread() + " - " + this);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("sleep() interrupted");
         }
     }
 
-    public static void main(String[] args) throws  Exception{
-        for(int i = 0; i < 5; i ++){
+    public static void main(String[] args) throws Exception {
+        for (int i = 0; i < 5; i++) {
             Thread daemon = new Thread(new SimpleDaemons());
             daemon.setDaemon(true);
             daemon.start();
@@ -43,15 +43,15 @@ public class SimpleDaemons implements Runnable {
     }
 
 
-    private static class ADaemon implements Runnable{
+    private static class ADaemon implements Runnable {
         @Override
         public void run() {
-            try{
+            try {
                 System.out.println("start ADaemon");
                 TimeUnit.MILLISECONDS.sleep(200);
-            }catch(Exception e){
+            } catch (Exception e) {
                 System.out.println("exception");
-            }finally{
+            } finally {
                 System.out.println("finally _>");
             }
         }

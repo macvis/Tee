@@ -30,19 +30,19 @@ public abstract class MenuComponent {
 
     }
 
-    public void add(MenuComponent menuComponent){
+    public void add(MenuComponent menuComponent) {
 
     }
 
-    public void remove(MenuComponent menuComponent){
+    public void remove(MenuComponent menuComponent) {
 
     }
 
-    public MenuComponent getChild(int index){
+    public MenuComponent getChild(int index) {
         return null;
     }
 
-    public CompositeIterator createIterator(){
+    public CompositeIterator createIterator() {
         return null;
     }
 
@@ -50,18 +50,18 @@ public abstract class MenuComponent {
 
         Stack stack = new Stack();
 
-        public CompositeIterator(Iterator iterator){
+        public CompositeIterator(Iterator iterator) {
             stack.push(iterator);
         }
 
         @Override
         public boolean hasNext() {
-            if(stack.empty()){
+            if (stack.empty()) {
                 return false;
             }
 
             Iterator iterator = (Iterator) stack.peek();
-            if(!iterator.hasNext()){
+            if (!iterator.hasNext()) {
                 stack.pop();
                 return hasNext();
             }
@@ -71,13 +71,13 @@ public abstract class MenuComponent {
 
         @Override
         public Object next() {
-            if(!hasNext()){
+            if (!hasNext()) {
                 return null;
             }
 
             Iterator iterator = (Iterator) stack.peek();
             MenuComponent component = (MenuComponent) iterator.next();
-            if(component instanceof Menu){
+            if (component instanceof Menu) {
                 stack.push(component.createIterator());
             }
             return component;

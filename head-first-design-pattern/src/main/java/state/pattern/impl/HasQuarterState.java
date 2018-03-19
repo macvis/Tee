@@ -10,9 +10,10 @@ import state.pattern.State;
 public class HasQuarterState implements State {
     GumballMachine machine;
 
-    public HasQuarterState(){}
+    public HasQuarterState() {
+    }
 
-    public HasQuarterState(GumballMachine machine){
+    public HasQuarterState(GumballMachine machine) {
         this.machine = machine;
     }
 

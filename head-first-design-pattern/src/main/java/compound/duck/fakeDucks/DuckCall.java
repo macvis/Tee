@@ -12,7 +12,7 @@ import compound.observer.impl.Observable;
 public class DuckCall implements Quackable {
     Observable observable;
 
-    public DuckCall(){
+    public DuckCall() {
         observable = new Observable(this);
     }
 

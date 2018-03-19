@@ -7,15 +7,15 @@ public class Light {
 
     private String location;
 
-    public Light(String location){
+    public Light(String location) {
         this.location = location;
     }
 
-    public void on(){
+    public void on() {
         System.out.println("Light is on");
     }
 
-    public void off(){
+    public void off() {
         System.out.println("light is off");
     }
 }

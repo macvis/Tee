@@ -11,7 +11,7 @@ import decorator.CondimentDecorator;
 public class Soy extends CondimentDecorator {
     Beverage beverage;
 
-    public Soy(Beverage beverage){
+    public Soy(Beverage beverage) {
         this.beverage = beverage;
 
         this.description += this.beverage.description + ", Soy";

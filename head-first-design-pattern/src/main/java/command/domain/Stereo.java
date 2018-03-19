@@ -8,24 +8,24 @@ public class Stereo {
     private String location;
     private int volume;
 
-    public Stereo(String location){
+    public Stereo(String location) {
         this.location = location;
     }
 
-    public void on(){
+    public void on() {
         System.out.println("stereo is on");
     }
 
-    public void setCD(){
+    public void setCD() {
         System.out.println("stereo's CD set up");
     }
 
-    public void setVolume(int volume){
+    public void setVolume(int volume) {
         this.volume = volume;
         System.out.println("stereo's volume is " + volume);
     }
 
-    public void off(){
+    public void off() {
         System.out.println("stereo off");
     }
 }

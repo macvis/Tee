@@ -8,7 +8,7 @@ import decorator.Beverage;
  */
 public class Decaf extends Beverage {
 
-    public Decaf(){
+    public Decaf() {
         description = "Decaf";
     }
 

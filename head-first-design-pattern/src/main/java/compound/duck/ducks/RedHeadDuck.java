@@ -11,7 +11,7 @@ import compound.observer.impl.Observable;
 public class RedHeadDuck implements Quackable {
     Observable observable;
 
-    public RedHeadDuck(){
+    public RedHeadDuck() {
         observable = new Observable(this);
     }
 

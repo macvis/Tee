@@ -11,7 +11,7 @@ import decorator.CondimentDecorator;
 public class Mocha extends CondimentDecorator {
     Beverage beverage;
 
-    public Mocha(Beverage beverage){
+    public Mocha(Beverage beverage) {
         this.beverage = beverage;
 
         this.description += this.beverage.description + ", Mocha";

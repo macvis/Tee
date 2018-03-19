@@ -17,12 +17,12 @@ public class FibonacciCallableImpl implements Callable<Integer> {
 
     private static List<Integer> list = new ArrayList<Integer>();
 
-    public FibonacciCallableImpl(int num ){
+    public FibonacciCallableImpl(int num) {
         this.n = num;
     }
 
     public Integer call() throws Exception {
-        if(n < 2){
+        if (n < 2) {
             throw new RuntimeException("boom");
         }
 
@@ -31,30 +31,30 @@ public class FibonacciCallableImpl implements Callable<Integer> {
         int time = 1;
         list.add(0);
         list.add(1);
-        while (time < n){
+        while (time < n) {
             list.add(list.get(time - 1) + list.get(time));
             time++;
         }
         int res = 0;
-        for(int i : list){
+        for (int i : list) {
             res += i;
         }
         return res;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         List<Future<Integer>> list = new ArrayList<Future<Integer>>();
         ExecutorService es = Executors.newFixedThreadPool(1);
-        for(int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             list.add(es.submit(new FibonacciCallableImpl(10)));
         }
         es.shutdown();
 
-        try{
-            for(Future<Integer> fu : list){
+        try {
+            for (Future<Integer> fu : list) {
                 System.out.println(fu.get());
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -3,9 +3,9 @@
  * @author : 温友朝
  * @date : 2017/5/15
  */
-public class Main{
+public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         MyThread t1 = new MyThread(1);
         MyThread t2 = new MyThread(2);
 

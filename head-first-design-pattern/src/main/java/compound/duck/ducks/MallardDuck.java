@@ -12,7 +12,7 @@ import java.util.Observer;
 public class MallardDuck implements Quackable {
     Observable observable;
 
-    public MallardDuck(){
+    public MallardDuck() {
         observable = new Observable(this);
     }
 

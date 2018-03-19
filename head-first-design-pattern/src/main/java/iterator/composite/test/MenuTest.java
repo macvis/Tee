@@ -10,7 +10,7 @@ import iterator.composite.waitress.Waitress;
  * @date 2017/9/13.
  */
 public class MenuTest {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         MenuComponent pancakeHouse = new Menu("PANCAKE HOUSE MENU", "BreakFast");
         MenuComponent dinner = new Menu("DINNER HOUSE MENU", "Lunch");
         MenuComponent cafe = new Menu("CAFE HOUSE MENU", "Dinner");

@@ -5,7 +5,7 @@ package compound.goose;
  * @date 2017/9/26.
  */
 public class Goose {
-    public void honk(){
+    public void honk() {
         System.out.println("Honk");
     }
 }

@@ -9,14 +9,14 @@ import java.util.Set;
  * @date 2017/9/12.
  */
 public class JedisTest {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         JedisPoolConfig config = new JedisPoolConfig();
         config.setMaxTotal(100);
         config.setMaxIdle(10);
 
         JedisPool pool = new JedisPool(config, "127.0.0.1", 6379);
         Jedis jedis = null;
-        try{
+        try {
             jedis = pool.getResource();
             jedis.auth("123456");
             jedis.set("name_jedis", "Tee, add by java");
@@ -26,13 +26,12 @@ public class JedisTest {
             System.out.println("value2 -> " + value2);
             Set<String> allKeys = jedis.keys("*");
             System.out.println("all -> " + allKeys);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
 
         }
     }
-
 
 
 }

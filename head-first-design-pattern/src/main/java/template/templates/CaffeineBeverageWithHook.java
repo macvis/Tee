@@ -5,11 +5,11 @@ package template.templates;
  */
 public abstract class CaffeineBeverageWithHook {
 
-    public void prepareRecipe(){
+    public void prepareRecipe() {
         boilWater();
         brew();
         pourInCup();
-        if(customerWantsCondiments()){
+        if (customerWantsCondiments()) {
             addCondiments();
         }
     }
@@ -18,15 +18,15 @@ public abstract class CaffeineBeverageWithHook {
 
     public abstract void addCondiments();
 
-    void boilWater(){
+    void boilWater() {
         System.out.println("boiling water");
     }
 
-    void pourInCup(){
+    void pourInCup() {
         System.out.println("pouring into cup");
     }
 
-    public boolean customerWantsCondiments(){
+    public boolean customerWantsCondiments() {
         return true;
     }
 }

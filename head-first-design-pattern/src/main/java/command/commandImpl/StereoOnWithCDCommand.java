@@ -10,7 +10,7 @@ public class StereoOnWithCDCommand implements Command {
 
     private Stereo stereo;
 
-    public StereoOnWithCDCommand(Stereo stereo){
+    public StereoOnWithCDCommand(Stereo stereo) {
         this.stereo = stereo;
     }
 

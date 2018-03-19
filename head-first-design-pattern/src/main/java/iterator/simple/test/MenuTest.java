@@ -10,7 +10,7 @@ import org.junit.Test;
 public class MenuTest {
 
     @Test
-    public void test(){
+    public void test() {
         Alice.printMenu();
     }
 }

@@ -11,11 +11,13 @@ public class WinnerState implements State {
 
     GumballMachine machine;
 
-    public WinnerState(){}
+    public WinnerState() {
+    }
 
-    public WinnerState(GumballMachine machine){
+    public WinnerState(GumballMachine machine) {
         this.machine = machine;
     }
+
     @Override
     public void insertQuarter() {
         System.out.println("already got one quarter");
@@ -35,7 +37,7 @@ public class WinnerState implements State {
     @Override
     public void dispense() {
         machine.releaseTwoGumaballs();
-        if(machine.count > 0){
+        if (machine.count > 0) {
             machine.setState(GumballMachine.NO_QUARTER_STATE);
         }
     }

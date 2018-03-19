@@ -5,7 +5,7 @@ package demoPack;
  */
 public class Foo {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         char c1 = 0x2d4e;
         char c2 = 0x8765;
 
@@ -15,21 +15,21 @@ public class Foo {
 
     }
 
-    private void out(){
+    private void out() {
 
     }
 
-    abstract class Goo{
+    abstract class Goo {
         protected abstract void Hoo();
 
         protected String s1;
         protected String s2;
 
-        public Goo(){
+        public Goo() {
 
         }
 
-        protected void write(){
+        protected void write() {
             System.out.println("xxoo");
         }
     }

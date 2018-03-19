@@ -4,36 +4,37 @@
  * @author : 温友朝
  * @date : 2017/5/16
  */
-public class LiftOff implements Runnable{
+public class LiftOff implements Runnable {
     private int countDown = 10;
 
     private static int taskCount = 0;
 
     private final int id = taskCount++;
 
-    public LiftOff(){}
+    public LiftOff() {
+    }
 
-    public LiftOff(int countDown){
+    public LiftOff(int countDown) {
         this.countDown = countDown;
     }
 
-    public String status(){
+    public String status() {
         return "#" + id + "(" + (countDown > 0 ? countDown : "liftOff!") + "), ";
     }
 
     public void run() {
-        while (countDown-- > 0){
+        while (countDown-- > 0) {
             System.out.print(status());
             Thread.yield();
         }
         System.out.println("");
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //1. 试验run方法
 //        new Thread1(new LiftOff()).start();
         //2、多线程执行
-        for(int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             new Thread(new LiftOff()).start();
             System.out.println("run method completed inside circle");
         }

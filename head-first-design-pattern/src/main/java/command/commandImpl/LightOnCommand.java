@@ -10,7 +10,7 @@ import command.domain.Light;
 public class LightOnCommand implements Command {
     private Light light;
 
-    public LightOnCommand(Light light){
+    public LightOnCommand(Light light) {
         this.light = light;
     }
 

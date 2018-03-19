@@ -6,10 +6,10 @@ package chainResponse;
  */
 public class ConcreteHandler extends Handler {
     public void doHandler() {
-        if(getNextHandler() != null){
+        if (getNextHandler() != null) {
             System.out.println("还有责任链");
             getNextHandler().doHandler();
-        }else{
+        } else {
             System.out.println("自己处理");
         }
     }

@@ -21,17 +21,18 @@ public class CoffeeWithHook extends CaffeineBeverageWithHook {
     /**
      * 其实在这个例子中，这个方法可以在父类中定义好，
      * 如果一直是这样的实现的话
+     *
      * @return
      */
-    public boolean customerWantsCondiments(){
+    public boolean customerWantsCondiments() {
         String answer = "";
         Scanner sc = new Scanner(System.in);
-        try{
+        try {
             System.out.println("would you like to add milk and sugar? (y/n)");
             answer = sc.next();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             sc.close();
         }
 

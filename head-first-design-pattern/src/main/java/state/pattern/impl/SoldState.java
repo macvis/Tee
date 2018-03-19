@@ -10,9 +10,10 @@ import state.pattern.State;
 public class SoldState implements State {
     GumballMachine machine;
 
-    public SoldState(){}
+    public SoldState() {
+    }
 
-    public SoldState(GumballMachine machine){
+    public SoldState(GumballMachine machine) {
         this.machine = machine;
     }
 
@@ -34,7 +35,7 @@ public class SoldState implements State {
     @Override
     public void dispense() {
         machine.release();
-        if(machine.count > 0){
+        if (machine.count > 0) {
             machine.setState(GumballMachine.NO_QUARTER_STATE);
         }
     }

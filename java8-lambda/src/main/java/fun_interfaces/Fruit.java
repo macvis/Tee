@@ -5,11 +5,11 @@ package fun_interfaces;
  */
 @FunctionalInterface
 public interface Fruit {
-    default String name(){
+    default String name() {
         return "fruit";
     }
 
-    default String color(){
+    default String color() {
         return "green";
     }
 

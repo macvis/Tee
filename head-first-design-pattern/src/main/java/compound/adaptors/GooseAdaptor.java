@@ -7,10 +7,10 @@ import compound.goose.Goose;
  * @author youchao.wen
  * @date 2017/9/26.
  */
-public class GooseAdaptor implements Quackable{
+public class GooseAdaptor implements Quackable {
     Goose goose;
 
-    public GooseAdaptor(Goose goose){
+    public GooseAdaptor(Goose goose) {
         this.goose = goose;
     }
 

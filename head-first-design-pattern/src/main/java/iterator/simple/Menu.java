@@ -6,8 +6,9 @@ package iterator.simple;
 public interface Menu {
     Iterator getIterator();
 
-    interface Iterator{
+    interface Iterator {
         boolean hasNext();
+
         Object next();
     }
 }

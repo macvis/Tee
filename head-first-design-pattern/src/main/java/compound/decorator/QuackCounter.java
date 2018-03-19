@@ -15,7 +15,7 @@ public class QuackCounter implements Quackable {
 
     Observable observable;
 
-    public QuackCounter(Quackable duck){
+    public QuackCounter(Quackable duck) {
         this.duck = duck;
         observable = new Observable(this);
     }
@@ -23,10 +23,10 @@ public class QuackCounter implements Quackable {
     @Override
     public void quack() {
         duck.quack();
-        count ++;
+        count++;
     }
 
-    public static int geiQuacks(){
+    public static int geiQuacks() {
         return count;
     }
 

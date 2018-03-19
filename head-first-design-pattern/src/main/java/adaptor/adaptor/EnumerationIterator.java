@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 public class EnumerationIterator implements Iterator {
     Enumeration enumer;
 
-    public EnumerationIterator(Enumeration enumer){
+    public EnumerationIterator(Enumeration enumer) {
         this.enumer = enumer;
     }
 

@@ -13,7 +13,7 @@ public abstract class Beverage {
     public String description = "";
     public static int size = TALL;
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 

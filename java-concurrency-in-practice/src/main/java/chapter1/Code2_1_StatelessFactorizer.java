@@ -14,21 +14,21 @@ public class Code2_1_StatelessFactorizer implements Servlet {
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse)
             throws ServletException, IOException {
-        BigInteger i  = extractFromRequest(servletRequest);
+        BigInteger i = extractFromRequest(servletRequest);
         BigInteger[] factors = factor(i);
 
         encodeIntoResponse(servletResponse, factors);
     }
 
-    public BigInteger extractFromRequest(ServletRequest req){
+    public BigInteger extractFromRequest(ServletRequest req) {
         return new BigInteger("10");
     }
 
-    public BigInteger[] factor(BigInteger i){
+    public BigInteger[] factor(BigInteger i) {
         return new BigInteger[]{};
     }
 
-    public void encodeIntoResponse(ServletResponse resp, BigInteger[] factors){
+    public void encodeIntoResponse(ServletResponse resp, BigInteger[] factors) {
 
     }
 

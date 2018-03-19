@@ -5,5 +5,6 @@ package adaptor;
  */
 public interface IDuck {
     void quack();
+
     void fly();
 }

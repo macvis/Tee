@@ -6,23 +6,23 @@ package command.domain;
 public class GarageDoor {
 
 
-    public void up(){
+    public void up() {
         System.out.println("Garage door is open");
     }
 
-    public void down(){
+    public void down() {
         System.out.println("garage door's down()");
     }
 
-    public void stop(){
+    public void stop() {
         System.out.println("garage door's stop");
     }
 
-    public void lightOn(){
+    public void lightOn() {
         System.out.println("garage door's light on");
     }
 
-    public void lightOff(){
+    public void lightOff() {
         System.out.println("garage door's light off");
     }
 }

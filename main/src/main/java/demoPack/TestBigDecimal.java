@@ -11,7 +11,7 @@ import java.util.Date;
  * Created by Tee on 2017/5/27.
  */
 public class TestBigDecimal {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String pattern = "yyyy-MM-dd";
         int in1 = compareDate("2017-05-02",
                 "2017-05-26 11:23:23", pattern);
@@ -37,19 +37,19 @@ public class TestBigDecimal {
 
     /**
      * 比较日期
+     *
      * @param date1Str
      * @param date2Str
      * @param pattern
-     * @return
-     * 		1  - date1 > date2
-     * 	   -1  - date1 < date2
-     * 	    0  - date1 = date2
-     * 	   -2  - 异常，无法比较
+     * @return 1  - date1 > date2
+     * -1  - date1 < date2
+     * 0  - date1 = date2
+     * -2  - 异常，无法比较
      */
-    public static int compareDate(String date1Str, String date2Str, String pattern){
-        if(StringUtils.isBlank(date1Str) |
+    public static int compareDate(String date1Str, String date2Str, String pattern) {
+        if (StringUtils.isBlank(date1Str) |
                 StringUtils.isBlank(date2Str) |
-                StringUtils.isBlank(pattern)){
+                StringUtils.isBlank(pattern)) {
             return -2;
         }
         Date date1 = strToDate(date1Str, pattern);

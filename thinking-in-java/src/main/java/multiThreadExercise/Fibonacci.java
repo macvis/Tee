@@ -13,12 +13,13 @@ public class Fibonacci implements Runnable {
     private int result = 0;
 
     private List<Integer> list = new ArrayList<Integer>();
-    public Fibonacci(int n){
+
+    public Fibonacci(int n) {
         this.n = n;
     }
 
     public void run() {
-        if(n < 2){
+        if (n < 2) {
             throw new RuntimeException("boom");
         }
 
@@ -26,18 +27,18 @@ public class Fibonacci implements Runnable {
         System.out.println(list.toString());
     }
 
-    private void generate(int n){
+    private void generate(int n) {
         int times = 1;
         list.add(0);
         list.add(1);
-        while(times < n){
+        while (times < n) {
             list.add(list.get(times) + list.get(times - 1));
-            times ++;
+            times++;
         }
     }
 
-    public static void main(String[] args){
-        for(int i = 0; i < 5; i++){
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i++) {
             new Thread(new Fibonacci(10)).start();
         }
     }

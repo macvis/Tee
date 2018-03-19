@@ -39,7 +39,7 @@ public class MenuItem extends MenuComponent {
         return price;
     }
 
-    public void print(){
+    public void print() {
         System.out.println("class       -> " + MenuItem.class.getName());
         System.out.println("name        -> " + name);
         System.out.println("vegetarian? -> " + vegetarian);

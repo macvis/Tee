@@ -9,7 +9,7 @@ public class Thread1 implements Runnable {
 
     private final int taskCount = id++;
 
-    public Thread1(){
+    public Thread1() {
         System.out.print("thread1 taskCount=" + taskCount + " initialized");
         System.out.println("\n");
     }
@@ -19,8 +19,8 @@ public class Thread1 implements Runnable {
         System.out.println("\n");
     }
 
-    public static void main(String[] args){
-        for(int i = 0; i < 5; i++){
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i++) {
             new Thread(new Thread1()).start();
             System.out.println("thread " + i + " closing");
             Thread.yield();

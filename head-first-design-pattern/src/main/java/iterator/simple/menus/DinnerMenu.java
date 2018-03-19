@@ -6,19 +6,20 @@ import iterator.simple.Menu;
 /**
  * Head First Design迭代器与组合模式的例子
  * page319
- *
+ * <p>
  * 对象村餐厅
- *
- *
+ * <p>
+ * <p>
  * Created by Tee on 2017/6/7.
  */
 public class DinnerMenu implements Menu {
     static final int MAX_ITEMS = 6;
 
     static int numberOfItems = 0;
-    static MenuItem[] menuItems = new MenuItem[MAX_ITEMS];;
+    static MenuItem[] menuItems = new MenuItem[MAX_ITEMS];
+    ;
 
-    static{
+    static {
         addItem("Vegetarian BLT",
                 "(Fakin') Bacon with lettuce & tomato on whole wheat",
                 true, 2.99);
@@ -36,15 +37,16 @@ public class DinnerMenu implements Menu {
                 false, 3.05);
     }
 
-    public DinnerMenu(){}
+    public DinnerMenu() {
+    }
 
-    public static void addItem(String name, String description, boolean vegetarian, double price){
+    public static void addItem(String name, String description, boolean vegetarian, double price) {
         MenuItem menuItem = new MenuItem(name, description, vegetarian, price);
-        if(numberOfItems >= MAX_ITEMS){
+        if (numberOfItems >= MAX_ITEMS) {
             System.err.println("Sorry, menu if full. Add item to menu canceled");
-        }else{
+        } else {
             menuItems[numberOfItems] = menuItem;
-            numberOfItems ++;
+            numberOfItems++;
         }
     }
 

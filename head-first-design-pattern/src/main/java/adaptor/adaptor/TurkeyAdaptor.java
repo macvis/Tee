@@ -9,7 +9,7 @@ import adaptor.ITurkey;
 public class TurkeyAdaptor implements IDuck {
     ITurkey turkey;
 
-    public TurkeyAdaptor(ITurkey turkey){
+    public TurkeyAdaptor(ITurkey turkey) {
         this.turkey = turkey;
     }
 
@@ -21,7 +21,7 @@ public class TurkeyAdaptor implements IDuck {
     @Override
     public void fly() {
         //火鸡飞行距离比较短，要飞5次才能达到鸭子的同等距离
-        for(int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             turkey.fly();
         }
     }

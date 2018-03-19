@@ -12,7 +12,7 @@ import compound.factory.AbstractDuckFactory;
  * @author youchao.wen
  * @date 2017/9/26.
  */
-public class CountingDuckFactory extends AbstractDuckFactory{
+public class CountingDuckFactory extends AbstractDuckFactory {
     @Override
     public Quackable createMallardDuck() {
         return new QuackCounter(new MallardDuck());

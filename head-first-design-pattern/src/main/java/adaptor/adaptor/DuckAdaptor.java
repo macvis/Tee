@@ -6,13 +6,13 @@ import adaptor.ITurkey;
 /**
  * 火鸡适配器
  * -> 假装自己是鸭的火鸡
- *
+ * <p>
  * Created by Tee on 2017/6/2.
  */
 public class DuckAdaptor implements ITurkey {
     IDuck duck;
 
-    public DuckAdaptor(IDuck duck){
+    public DuckAdaptor(IDuck duck) {
         this.duck = duck;
     }
 

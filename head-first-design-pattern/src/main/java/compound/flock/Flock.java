@@ -16,14 +16,14 @@ public class Flock implements Quackable {
     List<Quackable> flock = new ArrayList<>();
     QuackObservable observable;
 
-    public void add(Quackable quacker){
+    public void add(Quackable quacker) {
         flock.add(quacker);
         observable = new Observable(this);
     }
 
     @Override
     public void quack() {
-        for(Quackable quacker : flock){
+        for (Quackable quacker : flock) {
             quacker.quack();
         }
     }

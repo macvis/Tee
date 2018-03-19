@@ -11,9 +11,10 @@ public class NoQuarterState implements State {
 
     GumballMachine machine;
 
-    public NoQuarterState(){}
+    public NoQuarterState() {
+    }
 
-    public NoQuarterState(GumballMachine machine){
+    public NoQuarterState(GumballMachine machine) {
         this.machine = machine;
     }
 

@@ -14,17 +14,17 @@ public class GumballMachineTest {
     GumballMachine machine;
 
     @Before
-    public void init(){
+    public void init() {
         machine = new GumballMachine(5);
     }
 
     @After
-    public void destroy(){
+    public void destroy() {
         machine = null;
     }
 
     @Test
-    public void testDrive(){
+    public void testDrive() {
         System.out.println("=======prepare gumball machine=======");
         System.out.println(machine);
 

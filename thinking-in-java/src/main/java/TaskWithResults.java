@@ -14,7 +14,7 @@ import java.util.concurrent.Future;
 public class TaskWithResults implements Callable<String> {
     private int id;
 
-    public TaskWithResults(int id){
+    public TaskWithResults(int id) {
         this.id = id;
     }
 
@@ -22,20 +22,20 @@ public class TaskWithResults implements Callable<String> {
         return "result of TaskResult id = " + id;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         ExecutorService es = Executors.newCachedThreadPool();
         List<Future<String>> list = new ArrayList<Future<String>>();
-        for(int i = 0; i < 10; i ++){
+        for (int i = 0; i < 10; i++) {
             //submit方法会产生future对象
             //future对象是一个异步的对象类，可以接收处理好的submit对象
             list.add(es.submit(new TaskWithResults(i)));
         }
 
-        try{
-            for(Future<String> fs : list){
+        try {
+            for (Future<String> fs : list) {
                 System.out.println(fs.get());
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -8,19 +8,19 @@ package threadLocal;
  */
 public class Demo {
 
-    private static final ThreadLocal<String> threadLocal = new ThreadLocal<String>(){
+    private static final ThreadLocal<String> threadLocal = new ThreadLocal<String>() {
         @Override
-        public String initialValue(){
+        public String initialValue() {
             return "init";
         }
     };
 
-    public String getNext(){
+    public String getNext() {
         threadLocal.set(threadLocal.get().concat("NewValue"));
         return threadLocal.get();
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Demo demo = new Demo();
         TestThread test1 = new TestThread(demo);
         TestThread test2 = new TestThread(demo);
@@ -32,17 +32,17 @@ public class Demo {
 
     }
 
-    private static class TestThread implements Runnable{
+    private static class TestThread implements Runnable {
 
         private Demo demo;
 
-        public TestThread(Demo demo){
+        public TestThread(Demo demo) {
             this.demo = demo;
         }
 
         @Override
         public void run() {
-            for(int i = 0; i < 3; i ++){
+            for (int i = 0; i < 3; i++) {
                 System.out.println("thread -> " + Thread.currentThread());
                 System.out.println("threadLocal -> " + demo.getNext());
             }

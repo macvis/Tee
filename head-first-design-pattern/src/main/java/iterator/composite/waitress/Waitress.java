@@ -12,20 +12,20 @@ import java.util.Iterator;
 public class Waitress {
     MenuComponent allMenu;
 
-    public Waitress(MenuComponent allMenu){
+    public Waitress(MenuComponent allMenu) {
         this.allMenu = allMenu;
     }
 
-    public void printMenu(){
+    public void printMenu() {
         allMenu.print();
     }
 
-    public void printVegetarianMenu(){
+    public void printVegetarianMenu() {
         Iterator iterator = allMenu.createIterator();
         System.out.println("====VEGETARIAN MENU====");
-        while (iterator.hasNext()){
-            MenuComponent component = (MenuComponent)iterator.next();
-            if(!component.isVegetarian()){
+        while (iterator.hasNext()) {
+            MenuComponent component = (MenuComponent) iterator.next();
+            if (!component.isVegetarian()) {
                 continue;
             }
             component.print();

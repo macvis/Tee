@@ -14,12 +14,12 @@ import compound.goose.Goose;
  */
 public class DuckSimulator {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         AbstractDuckFactory duckFactory = new CountingDuckFactory();
         new DuckSimulator().simulate(duckFactory);
     }
 
-    void simulate(AbstractDuckFactory duckFactory){
+    void simulate(AbstractDuckFactory duckFactory) {
         Quackable mallardDuck = duckFactory.createMallardDuck();
         Quackable redheadDuck = duckFactory.createRedHeadDuck();
         Quackable duckCall = duckFactory.createDuckCall();
@@ -51,7 +51,7 @@ public class DuckSimulator {
         System.out.println("duck quacked " + QuackCounter.geiQuacks() + " times");
     }
 
-    void simulate(Quackable duck){
+    void simulate(Quackable duck) {
         duck.quack();
     }
 }

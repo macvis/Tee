@@ -17,7 +17,7 @@ public class CafeMenu implements Menu {
         return menuItems;
     }
 
-    public void addItem(String name, String description, boolean vegetarian, double price){
+    public void addItem(String name, String description, boolean vegetarian, double price) {
         menuItems.put(name, new MenuItem(name, description, vegetarian, price));
     }
 

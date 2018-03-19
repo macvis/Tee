@@ -11,7 +11,7 @@ import compound.observer.impl.Observable;
 public class RubberDuck implements Quackable {
     Observable observable;
 
-    public RubberDuck(){
+    public RubberDuck() {
         observable = new Observable(this);
     }
 

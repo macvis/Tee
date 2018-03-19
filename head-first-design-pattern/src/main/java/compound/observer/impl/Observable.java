@@ -14,7 +14,7 @@ public class Observable implements QuackObservable {
     List<Observer> observers = new ArrayList<>();
     QuackObservable duck;
 
-    public Observable(QuackObservable duck){
+    public Observable(QuackObservable duck) {
         this.duck = duck;
     }
 
@@ -25,7 +25,7 @@ public class Observable implements QuackObservable {
 
     @Override
     public void notifyObserver() {
-        for(Observer obs : observers){
+        for (Observer obs : observers) {
             obs.update(duck);
         }
     }
