@@ -1,7 +1,11 @@
 package demoPack;
 
+import com.alibaba.fastjson.JSON;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by Tee on 2017/5/25.
@@ -9,14 +13,35 @@ import java.sql.Timestamp;
 public class Foo {
 
     public static void main(String[] args) {
-        BigDecimal b1 = new BigDecimal("0.0000").stripTrailingZeros();
-        BigDecimal b2 = new BigDecimal("0");
-        System.out.println(b1.equals(BigDecimal.ZERO));
-        System.out.println(b2.equals(BigDecimal.ZERO));
+        AppMoudleGroup group = AppMoudleGroup.getEnumByValue("INDEX_BANNER");
+        System.out.println(JSON.toJSONString(group));
     }
 
     private void out() {
 
+    }
+
+    /**
+     * 提供将String类型的字符串内容，转化为Map
+     * 原始格式(String)：epay易信组;10.120.83.97:6801|epay用户组;10.120.82.201:6801
+     * 输出格式(Map<String, String>):{{epay易信组:10.120.83.97:6801}}{epay用户组:10.120.82.201:6801}}
+     * @param str
+     * @return
+     */
+    public static Map<String, String> string2MapStr(String str, String masterSplit, String slaveSplit)
+    {
+        String[] strs = str.split(masterSplit);
+        Map<String, String> resultMap = new TreeMap<>();
+
+        for (String item : strs)
+        {
+            //对于每一类的server组，第一个;前为其组名
+            String[] itemList = item.split(slaveSplit);
+            String key = itemList[0];
+            String value = itemList[1];
+            resultMap.put(key, value);
+        }
+        return resultMap;
     }
 
     static class Goo {
