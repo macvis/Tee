@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -13,8 +15,19 @@ import java.util.TreeMap;
 public class Foo {
 
     public static void main(String[] args) {
-        AppMoudleGroup group = AppMoudleGroup.getEnumByValue("INDEX_BANNER");
-        System.out.println(JSON.toJSONString(group));
+//        AppMoudleGroup group = AppMoudleGroup.getEnumByValue("INDEX_BANNER");
+//        System.out.println(JSON.toJSONString(group));
+
+        List<String> list = new ArrayList<>();
+        list.add("wb.wenyouchao");
+        list.add("shenyantest02");
+        list.add("11111");
+
+        System.out.println(JSON.toJSONString(list));
+
+
+
+
     }
 
     private void out() {
