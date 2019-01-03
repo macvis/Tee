@@ -19,12 +19,16 @@ public class Foo {
 //        System.out.println(JSON.toJSONString(group));
 
         List<String> list = new ArrayList<>();
-        list.add("wb.wenyouchao");
-        list.add("shenyantest02");
-        list.add("11111");
+//        list.add("wb.wenyouchao");
+//        list.add("shenyantest02");
+//        list.add("11111");
 
+        String str = "content1";
+        list.add(str);
         System.out.println(JSON.toJSONString(list));
 
+        str = "demoContent";
+        System.out.println(JSON.toJSONString(list));
 
 
 
