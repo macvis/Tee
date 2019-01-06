@@ -1,11 +1,7 @@
 package demoPack;
 
-import com.alibaba.fastjson.JSON;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -15,23 +11,23 @@ import java.util.TreeMap;
 public class Foo {
 
     public static void main(String[] args) {
-//        AppMoudleGroup group = AppMoudleGroup.getEnumByValue("INDEX_BANNER");
-//        System.out.println(JSON.toJSONString(group));
+        BigDecimal num = new BigDecimal("1");
+        for (int i = 0; i < 2000; i++) {
+            num = num.multiply(new BigDecimal(i + 1));
+        }
+        String numStr = num.toString();
+        System.out.println("num = " + numStr);
+        int numLength = numStr.length();
+        System.out.println("num length = " + numLength);
 
-        List<String> list = new ArrayList<>();
-//        list.add("wb.wenyouchao");
-//        list.add("shenyantest02");
-//        list.add("11111");
-
-        String str = "content1";
-        list.add(str);
-        System.out.println(JSON.toJSONString(list));
-
-        str = "demoContent";
-        System.out.println(JSON.toJSONString(list));
-
-
-
+        int zeroCount = 0;
+        for (int i = 0; i < numLength; i++) {
+            char c = numStr.charAt(i);
+            if(c == '0'){
+                zeroCount++;
+            }
+        }
+        System.out.println("zero count = " + zeroCount);
     }
 
     private void out() {
@@ -42,16 +38,15 @@ public class Foo {
      * 提供将String类型的字符串内容，转化为Map
      * 原始格式(String)：epay易信组;10.120.83.97:6801|epay用户组;10.120.82.201:6801
      * 输出格式(Map<String, String>):{{epay易信组:10.120.83.97:6801}}{epay用户组:10.120.82.201:6801}}
+     *
      * @param str
      * @return
      */
-    public static Map<String, String> string2MapStr(String str, String masterSplit, String slaveSplit)
-    {
+    public static Map<String, String> string2MapStr(String str, String masterSplit, String slaveSplit) {
         String[] strs = str.split(masterSplit);
         Map<String, String> resultMap = new TreeMap<>();
 
-        for (String item : strs)
-        {
+        for (String item : strs) {
             //对于每一类的server组，第一个;前为其组名
             String[] itemList = item.split(slaveSplit);
             String key = itemList[0];
