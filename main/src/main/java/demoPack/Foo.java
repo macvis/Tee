@@ -1,7 +1,11 @@
 package demoPack;
 
+import org.springframework.util.CollectionUtils;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -11,23 +15,30 @@ import java.util.TreeMap;
 public class Foo {
 
     public static void main(String[] args) {
-        BigDecimal num = new BigDecimal("1");
-        for (int i = 0; i < 2000; i++) {
-            num = num.multiply(new BigDecimal(i + 1));
-        }
-        String numStr = num.toString();
-        System.out.println("num = " + numStr);
-        int numLength = numStr.length();
-        System.out.println("num length = " + numLength);
+//        BigDecimal num = new BigDecimal("1");
+//        for (int i = 0; i < 2000; i++) {
+//            num = num.multiply(new BigDecimal(i + 1));
+//        }
+//        String numStr = num.toString();
+//        System.out.println("num = " + numStr);
+//        int numLength = numStr.length();
+//        System.out.println("num length = " + numLength);
+//
+//        int zeroCount = 0;
+//        for (int i = 0; i < numLength; i++) {
+//            char c = numStr.charAt(i);
+//            if(c == '0'){
+//                zeroCount++;
+//            }
+//        }
+//        System.out.println("zero count = " + zeroCount);
 
-        int zeroCount = 0;
-        for (int i = 0; i < numLength; i++) {
-            char c = numStr.charAt(i);
-            if(c == '0'){
-                zeroCount++;
-            }
-        }
-        System.out.println("zero count = " + zeroCount);
+        List<String> list = new ArrayList<>();
+//        list.add(null);
+        System.out.println("list.add(null);");
+        System.out.println("CollectionUtils.isEmpty(list) -> " + CollectionUtils.isEmpty(list));
+        System.out.println("list.get(0) ->" + list.get(0));
+        System.out.println("list.isEmpty() ->" + list.isEmpty());
     }
 
     private void out() {
