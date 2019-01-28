@@ -67,6 +67,7 @@ public class Foo {
         return resultMap;
     }
 
+
     static class Goo {
         protected String s1;
         protected String s2;
@@ -129,6 +130,5 @@ public class Foo {
 //            System.out.println("xxoo");
 //        }
     }
-
 
 }
