@@ -1,13 +1,16 @@
 package demoPack;
 
-import org.springframework.util.CollectionUtils;
+import org.apache.commons.codec.binary.Base64;
 
 import java.math.BigDecimal;
+import java.security.KeyFactory;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.spec.X509EncodedKeySpec;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.*;
 
 /**
  * Created by Tee on 2017/5/25.
@@ -15,34 +18,32 @@ import java.util.TreeMap;
 public class Foo {
 
     public static void main(String[] args) {
-//        BigDecimal num = new BigDecimal("1");
-//        for (int i = 0; i < 2000; i++) {
-//            num = num.multiply(new BigDecimal(i + 1));
-//        }
-//        String numStr = num.toString();
-//        System.out.println("num = " + numStr);
-//        int numLength = numStr.length();
-//        System.out.println("num length = " + numLength);
-//
-//        int zeroCount = 0;
-//        for (int i = 0; i < numLength; i++) {
-//            char c = numStr.charAt(i);
-//            if(c == '0'){
-//                zeroCount++;
-//            }
-//        }
-//        System.out.println("zero count = " + zeroCount);
+        String sign = "6cz8VATEutOg3TNpqFb4+PW9vL1XvypU3Qu1jszw/83uLUdHKXA3zbJETicZFtUZJ3wwVIxg5DhHuS4a7J8LiqnHbrdAU/LiB9LhyedsLVpdPCAB04HM8cmTs6lLA9kXT86XgZDMndlfGlBZuZuNWFHSfzWi7Np3JDkPED+zNfI=";
+        String pubKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDzbCpYQX3JquqipDDXU9PTqvMS\n" +
+                "RHahfeDyD+cbpkU/Tga8mqg1Em84qqPzKfpyUI8vvaEmL4pCwTqgRwytrswwVFBB\n" +
+                "YRPIj4RWOMWRer6pGmJI1SodY0UPKr/IFcQboadUC4VSXripQuhJSZPcTfHux6cU\n" +
+                "pPSWr5RwrE6EYvRd5wIDAQAB";
+        String data = "payGateTradeId=20181211TX22342342&queryType=order&requester=kunPeng";
 
-        List<String> list = new ArrayList<>();
-//        list.add(null);
-        System.out.println("list.add(null);");
-        System.out.println("CollectionUtils.isEmpty(list) -> " + CollectionUtils.isEmpty(list));
-        System.out.println("list.get(0) ->" + list.get(0));
-        System.out.println("list.isEmpty() ->" + list.isEmpty());
+        try {
+            boolean f = verify(data.getBytes("UTF-8"), pubKey, sign);
+            System.out.println("f  -> " + f);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    private void out() {
-
+    public static boolean verify(byte[] data, String publicKey, String sign)
+            throws Exception {
+        byte[] keyBytes = Base64.decodeBase64(publicKey);
+        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        PublicKey publicK = keyFactory.generatePublic(keySpec);
+        Signature signature = Signature.getInstance("SHA1withRSA");
+        signature.initVerify(publicK);
+        signature.update(data);
+        return signature.verify(Base64.decodeBase64(sign));
     }
 
     /**
@@ -129,6 +130,42 @@ public class Foo {
         //        protected void write() {
 //            System.out.println("xxoo");
 //        }
+    }
+
+    static class Task1 implements Callable<String>{
+        @Override
+        public String call() throws Exception {
+
+            return "1";
+        }
+    }
+
+    static class Task2 implements Future<String>{
+        @Override
+        public boolean cancel(boolean mayInterruptIfRunning) {
+            return false;
+        }
+
+        @Override
+        public boolean isCancelled() {
+            return false;
+        }
+
+        @Override
+        public boolean isDone() {
+            return false;
+        }
+
+        @Override
+        public String get() throws InterruptedException, ExecutionException {
+            return null;
+
+        }
+
+        @Override
+        public String get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
+            return null;
+        }
     }
 
 }
