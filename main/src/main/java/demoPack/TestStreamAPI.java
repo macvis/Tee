@@ -24,21 +24,23 @@ public class TestStreamAPI {
 
         types.stream()
                 .filter(type -> StringUtils.contains(type, "AND"))
-                .forEach(type -> assembleAndroidAppDTO(androidSet, type));
+                .forEach(androidSet :: add);
 
         types.stream().filter(type -> StringUtils.equals(type, "IOS"))
-                .findAny().ifPresent(type -> assembleIOSAppDTO(iosSet, type));
+                .findAny().ifPresent(iosSet :: add);
 
-        types.stream().filter(type -> StringUtils.equals(type, "H5"))
-                .findAny().ifPresent(type -> assembleH5AppDTO(h5Set, type));
+        types.stream()
+                .filter(type -> StringUtils.equals(type, "H5"))
+                .findAny()
+                .ifPresent(h5Set :: add);
 
         types.stream().filter(type -> StringUtils.equals(type, "ALL"))
                 .findAny().ifPresent(type ->
         {
             //转换ANDROID
-            assembleAndroidAppDTO(androidSet, "ANDROID");
+            androidSet.add(type);
             //转换IOS
-            assembleIOSAppDTO(iosSet, "IOS");
+            iosSet.add(type);
         });
 
 
@@ -56,11 +58,11 @@ public class TestStreamAPI {
 
     private static void assembleIOSAppDTO(Set<String> iosSet, String type)
     {
-        iosSet.add(type);
+        ;
     }
 
     private static void assembleAndroidAppDTO(Set<String> androidSet, String type)
     {
-        androidSet.add(type);
+        ;
     }
 }

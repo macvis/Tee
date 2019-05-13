@@ -47,6 +47,7 @@ public class TestToMap {
         List<TerroristDTO> list = terroristList.stream()
                 .filter(StringUtils::isNotBlank)
                 .filter(terrorist -> terrorist.indexOf(":") > 0)
+                .filter(terrorist -> terrorist.split(":").length > 1)
                 .map(terroristStr ->
                 {
                     String[] arr = terroristStr.split(":");
@@ -73,6 +74,7 @@ public class TestToMap {
         System.out.println("terrorists -> " + JSON.toJSONString(list2));
 
     }
+
     @Data
     public static class ProvinceCity implements Serializable {
         private static final long serialVersionUID = 1226516268726536108L;
@@ -104,12 +106,16 @@ public class TestToMap {
         /**
          * 真实姓名
          */
-        private String realName = DUMMY;
+        private String realName;
 
         /**
          * 身份证号
          */
         private String idNumber;
+
+        TerroristDTO() {
+            this.realName = DUMMY;
+        }
 
         @Override
         public String toString() {
@@ -118,6 +124,16 @@ public class TestToMap {
             sb.append(", idNumber='").append(idNumber).append('\'');
             sb.append('}');
             return sb.toString();
+        }
+    }
+
+    public interface Foo{
+        default String method(){
+            return "";
+        }
+
+        default Integer method2(){
+            return 1;
         }
     }
 }
