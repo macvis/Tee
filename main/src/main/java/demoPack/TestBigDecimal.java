@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 /**
  * Created by Tee on 2017/5/27.
@@ -27,12 +28,14 @@ public class TestBigDecimal {
 
         int in5 = compareDate("2017-05-26 14:12:11", "", pattern);
 
-        System.out.println("in1 -> " + in1);
-        System.out.println("in2 -> " + in2);
-        System.out.println("in3 -> " + in3);
-        System.out.println("in4 -> " + in4);
-        System.out.println("in5 -> " + in5);
+//        System.out.println("in1 -> " + in1);
+//        System.out.println("in2 -> " + in2);
+//        System.out.println("in3 -> " + in3);
+//        System.out.println("in4 -> " + in4);
+//        System.out.println("in5 -> " + in5);
 
+
+        System.out.println("check digit -> " + checkDigit("-2000"));
     }
 
     /**
@@ -73,9 +76,13 @@ public class TestBigDecimal {
         try {
             return format.parse(str);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static boolean checkDigit(String digit) {
+        String regex = "^0|(-|\\+)?[1-9]\\d*$";
+        return Pattern.matches(regex, digit);
     }
 }
