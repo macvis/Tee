@@ -1,7 +1,11 @@
 package leetcode;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * leet code 刷题、解题
@@ -49,6 +53,16 @@ public class Subject {
 
             return result;
         }
+
+        public static void main(String[] args) {
+            int[] nums = {2, 7, 11, 15, 0, 20, 21};
+            int target = 41;
+            int[] result1 = TwoSums1.solve1(nums, target);
+            System.out.println("result1 -> " + result1[0] + ", " + result1[1]);
+
+            int[] result2 = TwoSums1.solve2(nums, target);
+            System.out.println("result2 -> " + result2[0] + ", " + result2[1]);
+        }
     }
 
     /**
@@ -63,7 +77,7 @@ public class Subject {
      * 原因：342 + 465 = 807
      */
     public static class TwoSums2 {
-        public ListNode solve1(ListNode node1, ListNode node2) {
+        public static ListNode solve1(ListNode node1, ListNode node2) {
             Integer val1 = Integer.parseInt(stringify(node1));
             Integer val2 = Integer.parseInt(stringify(node2));
 
@@ -71,7 +85,7 @@ public class Subject {
             return toNode(sum);
         }
 
-        private String stringify(ListNode node) {
+        private static String stringify(ListNode node) {
             StringBuilder val = new StringBuilder();
             ListNode temp = node;
             while (temp != null) {
@@ -83,59 +97,168 @@ public class Subject {
 
         public static ListNode toNode(int val) {
             String str = new StringBuilder(val + "").reverse().toString();
-            int index = 0;
-            int length = str.length();
-            String temp = str.substring(index, index + 1);
-            int num = Integer.parseInt(temp);
-            ListNode node = new ListNode(num);
+            List<String> strList = IntStream
+                    .range(0, str.length())
+                    .mapToObj(i -> str.substring(i, i + 1))
+                    .collect(Collectors.toList());
+            ListNode node = new ListNode(Integer.parseInt(strList.get(0)));
             ListNode tmp = node;
-            while (tmp != null){
-                index ++;
-                if(index + 1 <= length && temp != null){
-                    temp = str.substring(index, index + 1);
-                    num = Integer.parseInt(temp);
-                    tmp.next = new ListNode(num);
-                    node.next = tmp;
 
-                    tmp = tmp.next;
-                }else{
-                    tmp = null;
-                }
+            for (int i = 1; i < strList.size(); i++) {
+                tmp.add(Integer.parseInt(strList.get(i)));
+                tmp = tmp.next;
             }
-
             return node;
         }
-    }
 
-    private static class ListNode {
-        int val;
-        ListNode next;
+        private static class ListNode {
+            int val;
+            ListNode next;
 
-        ListNode(int x) {
-            val = x;
-        }
-
-        @Override
-        public String toString() {
-            ListNode node = this;
-            StringBuilder builder = new StringBuilder(this.val);
-            while (node.next != null) {
-                node = node.next;
-                builder.append(" -> ").append(node.val);
+            ListNode(int x) {
+                val = x;
             }
 
-            return builder.toString();
+            void add(int x) {
+                this.next = new ListNode(x);
+            }
+
+            @Override
+            public String toString() {
+                ListNode node = this;
+                StringBuilder builder = new StringBuilder(this.val + "");
+                while (node.next != null) {
+                    node = node.next;
+                    builder.append(" -> ").append(node.val);
+                }
+
+                return builder.toString();
+            }
+        }
+
+        public static void main(String[] args) {
+
+            ListNode node1 = new ListNode(8);
+            node1.next = new ListNode(9);
+            node1.next.next = new ListNode(4);
+
+            ListNode node2 = new ListNode(6);
+            node2.next = new ListNode(1);
+            node2.next.next = new ListNode(8);
+
+            ListNode res = TwoSums2.solve1(node1, node2);
+            System.out.println("node -> " + res);
         }
     }
 
-    public static void main(String[] args) {
-//        int[] nums = {2, 7, 11, 15, 0, 20, 21};
-//        int target = 41;
-//        int[] result = TwoSums1.solve2(nums, target);
-//        System.out.println("result -> " + result[0] + ", " + result[1]);
 
-        int val1 = 123;
-        ListNode node = TwoSums2.toNode(val1);
-        System.out.println("node -> " + node);
+    /**
+     * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+     * 输入: "abcabcbb"
+     * 输出: 3
+     * 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+     */
+    public static class NonRepeatSubStringLength {
+        public static int solve(String str) {
+            String noneRepeatStr = "";
+            int length = str.length();
+            for (int i = 0; i < length; i++) {
+                for (int j = length; j >= i; j--) {
+                    String temp = str.substring(i, j);
+                    if (noneRepeat(temp) && temp.length() > noneRepeatStr.length()) noneRepeatStr = temp;
+                }
+            }
+            return noneRepeatStr.length();
+        }
+
+        public static int solve2(String s) {
+            // 字符上次出现的位置
+            Map<Character, Integer> charLastPos = new HashMap<Character, Integer>(16);
+            // 子串起始位置为start+1
+            int start = -1;
+            // 最长子串长度
+            int maxLen = 0;
+            // 记录字符串长度，避免for循环多次都调用函数
+            int len = s.length();
+            for (int i = 0; i < len; i++) {
+                Character cur = s.charAt(i);
+                if (charLastPos.containsKey(cur)) {
+                    // 当前字符上一次出现的位置
+                    int lastPos = charLastPos.get(cur);
+                    // 出现重复字符时，比较字符上次出现的位置与当前子串start大小
+                    // 若小于start，说明不在当前子串里，start不变
+                    // 若大于start，说明在当前子串里，把start更新到字符上次出现的位置
+                    if (lastPos > start) {
+                        start = lastPos;
+                    }
+                }
+                // 子串其实是从start+1位置开始
+                // 子串长度计算公式为：i-(start+1)+1，简化为i-start
+                int curLen = i - start;
+                if (curLen > maxLen) {
+                    maxLen = curLen;
+                }
+                charLastPos.put(s.charAt(i), i);
+            }
+            return maxLen;
+        }
+
+        public static boolean noneRepeat(String str) {
+            char[] chars = str.toCharArray();
+
+            return false;
+        }
+
+        public static void main(String[] args) {
+            int res = solve2("pvfnhzjtceavpzjzhwdbgjdehelnuwvlrababkwdowbexmffjigrsjvbpiqmglxaoyaplwtzvwfuimz");
+            System.out.println("res -> " + res);
+        }
     }
+
+    /**
+     * 寻找两个有序数组的中位数
+     * <p>
+     * 给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。
+     * 请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
+     * 你可以假设 nums1 和 nums2 不会同时为空。
+     */
+    public static class FindMedianInSortedArrays {
+
+        public static float solve(int[] nums1, int[] nums2) {
+            int totalLength = nums1.length + nums2.length;
+            int[] numsArr = new int[totalLength];
+            System.arraycopy(nums1, 0, numsArr, 0, nums1.length);
+
+            System.arraycopy(nums2, 0, numsArr, nums1.length, nums2.length);
+
+            Arrays.sort(numsArr);
+            System.out.println("numsArr -> " + Arrays.toString(numsArr));
+
+            int medianMod = totalLength % 2;
+
+            float result = 0;
+            if (medianMod == 0) {
+                int lowerIndex = totalLength / 2 - 1;
+                int upperIndex = totalLength / 2;
+
+                result = (float) (numsArr[lowerIndex] + numsArr[upperIndex]) / 2;
+            } else {
+                int medianIndex = totalLength / 2;
+                result = numsArr[medianIndex];
+            }
+
+            return result;
+        }
+
+
+
+        public static void main(String[] args) {
+            int[] nums1 = {1, 3, 5, 6};
+            int[] nums2 = {2};
+            double result = solve(nums1, nums2);
+            System.out.println("result -> " + result);
+        }
+    }
+
+
 }
