@@ -32,6 +32,8 @@ public class Foo {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        ExecutorService pool = Executors.newCachedThreadPool();
     }
 
     public static boolean verify(byte[] data, String publicKey, String sign)
