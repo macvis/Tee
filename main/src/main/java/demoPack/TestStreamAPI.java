@@ -15,19 +15,10 @@ public class TestStreamAPI {
         List<String> list =
                 Arrays.asList("hello", "world", "as", "the", "best", "day");
 
-/*        int totalLength1 = list.stream()
-                .reduce(0,
-                        (sum, s) -> {
-                            sum += s.length();
-                            System.out.println("累加器");
-                            return sum;
-                        },
-                        (sum1, sum2) -> {
-                            int sum = sum1 + sum2;
-                            System.out.println("组合器");
-                            return sum;
-                        });
-        System.out.println("totalLength1 -> " + totalLength1);*/
+        String phrase = list.stream()
+                .reduce("sentence: ", (s1, s2) -> s1 + " " + s2);
+        System.out.println("phrase -> " + phrase);
+
 
         int totalLength2 = list.parallelStream()
                 .reduce(0,
@@ -42,6 +33,16 @@ public class TestStreamAPI {
                             return sum;
                         });
         System.out.println("totalLength2 -> " + totalLength2);
+
+
+
+        list.parallelStream()
+                .filter(s -> {
+                    System.out.println("s.filter -> " + s);
+                    return true;
+                })
+                .map(String :: toUpperCase)
+                .forEach(s -> System.out.println("s.forEach -> " + s));
 
     }
 
