@@ -35,13 +35,12 @@ public class TestStreamAPI {
         System.out.println("totalLength2 -> " + totalLength2);
 
 
-
         list.parallelStream()
                 .filter(s -> {
                     System.out.println("s.filter -> " + s);
                     return true;
                 })
-                .map(String :: toUpperCase)
+                .map(String::toUpperCase)
                 .forEach(s -> System.out.println("s.forEach -> " + s));
 
     }

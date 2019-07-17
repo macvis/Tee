@@ -127,12 +127,12 @@ public class TestToMap {
         }
     }
 
-    public interface Foo{
-        default String method(){
+    public interface Foo {
+        default String method() {
             return "";
         }
 
-        default Integer method2(){
+        default Integer method2() {
             return 1;
         }
     }

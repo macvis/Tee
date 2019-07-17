@@ -1,9 +1,8 @@
 package leetcode;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.alibaba.fastjson.JSON;
+
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -251,7 +250,6 @@ public class Subject {
         }
 
 
-
         public static void main(String[] args) {
             int[] nums1 = {1, 3, 5, 6};
             int[] nums2 = {2};
@@ -260,5 +258,96 @@ public class Subject {
         }
     }
 
+    /**
+     * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+     */
+    public static class LongestPalindrome {
+        private static String s1 = "babad";
+        private static String s2 = "xcvabbazxca";
+        private static String s3 = "hellolleh";
+        private static String s4 = "ioklabcddcbalkoasddadsa";
 
+        public static void main(String[] args) {
+            System.out.println("subLength1 -> " + solve(s1));
+            System.out.println("subLength2 -> " + solve(s2));
+            System.out.println("subLength3 -> " + solve(s3));
+            System.out.println("subLength4 -> " + solve(s4));
+        }
+
+        public static String solve(String str) {
+            if (str == null || str.length() == 0) return "";
+            if (str.equals(new StringBuilder(str).reverse().toString())) return str;
+
+            int length = str.length();
+            String temp = str.substring(0, 1);
+            for (int i = 0; i < length; i++) {
+                char head = str.charAt(i);
+                int tailIndex = str.lastIndexOf(head);
+                if (tailIndex <= 0) continue;
+
+                String subStr = str.substring(i, tailIndex + 1);
+                String reversed = new StringBuilder(subStr).reverse().toString();
+                if (subStr.length() <= 0) continue;
+                if (subStr.length() == 1) {
+                    temp = subStr;
+                    continue;
+                }
+
+                if (subStr.equals(reversed)) return subStr;
+
+                subStr = subStr.substring(0, subStr.length() - 1);
+                return solve(subStr);
+            }
+
+            return temp;
+        }
+    }
+
+    /**
+     * 将一个给定字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。
+     * 比如输入字符串为 "LEETCODEISHIRING" 行数为 3 时，排列如下：
+     * <p>
+     * L   C   I   R
+     * E T O E S I I G
+     * E   D   H   N
+     * 之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如："LCIRETOESIIGEDHN"。
+     * <p>
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/zigzag-conversion
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     */
+    public static class ZStringTransform {
+        private static String s1 = "helloworldasthebestdayofyourlife";
+
+        public static String solve(String str, int rows) {
+            if (str == null || "".equals(str)) return "";
+
+            int length = str.length();
+            String[] arr = str.split("");
+            int[] indexSteps = new int[rows];
+            indexSteps[0] = rows + rows - 3;
+            for (int i = 1; i < rows; i++) {
+                int index = indexSteps[i - 1] - 2;
+                indexSteps[i] = index >= 0 ? index : 0;
+            }
+
+            List<String> result = new ArrayList<>();
+            for (int i = 0; i < rows; i++) {
+                result.add(arr[i]);
+                int index = indexSteps[i] + 1;
+                while (index < length) {
+                    result.add(arr[index]);
+                    index += (indexSteps[i] + 1);
+                }
+            }
+
+            System.out.println("indexSteps ->" + JSON.toJSONString(indexSteps));
+            System.out.println("result -> " + JSON.toJSONString(result));
+            return str;
+        }
+
+        public static void main(String[] args) {
+            solve(s1, 5);
+        }
+    }
 }

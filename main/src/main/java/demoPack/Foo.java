@@ -134,7 +134,7 @@ public class Foo {
 //        }
     }
 
-    static class Task1 implements Callable<String>{
+    static class Task1 implements Callable<String> {
         @Override
         public String call() throws Exception {
 
@@ -142,7 +142,7 @@ public class Foo {
         }
     }
 
-    static class Task2 implements Future<String>{
+    static class Task2 implements Future<String> {
         @Override
         public boolean cancel(boolean mayInterruptIfRunning) {
             return false;
