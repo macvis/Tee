@@ -1,7 +1,5 @@
 package leetcode;
 
-import com.alibaba.fastjson.JSON;
-
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -320,34 +318,39 @@ public class Subject {
         private static String s1 = "helloworldasthebestdayofyourlife";
 
         public static String solve(String str, int rows) {
-            if (str == null || "".equals(str)) return "";
+            if (rows <= 1) {
+                return str;
+            }
 
+            //方向控制法
+            //rows=2, ⬇⬆⬇⬆
+            //rows=3, ⬇⬇⬆⬆
+            String result = "";
+            String[] strRows = new String[rows];
+            //初始化为空串
+            Arrays.fill(strRows, "");
             int length = str.length();
-            String[] arr = str.split("");
-            int[] indexSteps = new int[rows];
-            indexSteps[0] = rows + rows - 3;
-            for (int i = 1; i < rows; i++) {
-                int index = indexSteps[i - 1] - 2;
-                indexSteps[i] = index >= 0 ? index : 0;
+            int rowIndex = 0;
+            //字符画前进方向是否向下
+            boolean isDown = false;
+            for(int i = 0; i < length; i ++){
+                String s = str.substring(i, i + 1);
+                strRows[rowIndex] += s;
+                if(rowIndex == 0) isDown = true;
+                if(rowIndex == rows - 1) isDown = false;
+
+                rowIndex = isDown ? rowIndex + 1 : rowIndex - 1;
             }
 
-            List<String> result = new ArrayList<>();
-            for (int i = 0; i < rows; i++) {
-                result.add(arr[i]);
-                int index = indexSteps[i] + 1;
-                while (index < length) {
-                    result.add(arr[index]);
-                    index += (indexSteps[i] + 1);
-                }
+            for(String s : strRows){
+                result = result.concat(s);
             }
 
-            System.out.println("indexSteps ->" + JSON.toJSONString(indexSteps));
-            System.out.println("result -> " + JSON.toJSONString(result));
-            return str;
+            return result;
         }
 
         public static void main(String[] args) {
-            solve(s1, 5);
+            System.out.println(solve(s1, 4));
         }
     }
 }
