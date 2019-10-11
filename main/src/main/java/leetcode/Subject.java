@@ -400,6 +400,9 @@ public class Subject {
     }
 
     /**
+     * ----> 这题没有意义
+     *
+     *
      * 请你来实现一个 atoi 函数，使其能将字符串转换成整数。
      * <p>
      * 首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。
@@ -445,15 +448,101 @@ public class Subject {
      * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
      */
     public static class String2Integer {
-        public int solve(String words) {
-            //去空
-            words = words.replaceAll(" ", "");
+        static final List<String> numStrList = Arrays.asList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+        static final List<String> effectiveNumStrs = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
+
+        public static int solve(String words) {
+            if (words == null || "".equals(words) || "+".equals(words) || "-".equals(words)) {
+                return 0;
+            }
+            int length = words.length();
+            words = words.trim();
+            if ("".equals(words)) {
+                return 0;
+            }
 
             //正负号
-            String positive = "+";
-            String negative = "-";
+            String first = words.substring(0, 1);
+            final List<String> possibleBegin = Arrays.asList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-");
+            if (!possibleBegin.contains(first)) {
+                return 0;
+            }
+            if (("+".equals(first) || "-".equals(first)) && words.length() >= 2) {
+                String second = words.substring(1, 2);
+                if (!numStrList.contains(second)) return 0;
+            }
+            String numStr = "";
+            if (first.equals("+") || first.equals("-")) {
+                String symbolRemoved = words.substring(1, words.length());
+                numStr = first + getContinuousNumStr(symbolRemoved, 0, new StringBuilder()).toString();
+            } else {
+                numStr = getContinuousNumStr(words, 0, new StringBuilder()).toString();
+            }
 
-            return -1;
+            //头部去零
+            while (numStr.startsWith("0") || numStr.startsWith("+") || numStr.startsWith("-")) {
+                numStr = numStr.replaceFirst("0", "");
+                if ("".equals(numStr)) {
+                    return 0;
+                }
+                if(possibleBegin.contains(numStr.substring(0, 1))
+                    && (numStr.length() >= 2 && effectiveNumStrs.contains(numStr.substring(1, 2)))){
+                    break;
+                }
+            }
+
+            if (first.equals("-") && numStr.length() >= (Integer.MIN_VALUE + "").length()) {
+                return Integer.MIN_VALUE;
+            }
+
+            if (first.equals("+") && numStr.length() >= (Integer.MAX_VALUE + "").length()) {
+                return Integer.MAX_VALUE;
+            }
+
+            if (numStr.length() >= (Integer.MAX_VALUE + "").length()) {
+                return Integer.MAX_VALUE;
+            }
+
+            if (numStr == null || "".equals(numStr) || "+".equals(numStr) || "-".equals(numStr)) {
+                return 0;
+            }
+            Long num = Long.valueOf(numStr);
+            if (num > Integer.MAX_VALUE) {
+                return Integer.MAX_VALUE;
+            }
+            if (num < Integer.MIN_VALUE) {
+                return Integer.MIN_VALUE;
+            }
+
+
+            return num.intValue();
+        }
+
+        public static StringBuilder getContinuousNumStr(String words, int index, StringBuilder nums) {
+            if (words.length() >= (index + 1) && numStrList.contains(words.substring(index, index + 1))) {
+                nums.append(words.substring(index, index + 1));
+                getContinuousNumStr(words, index += 1, nums);
+            }
+            return nums;
+        }
+
+        public static void main(String[] args) {
+            System.out.println("solve -> " + solve("words001122"));
+            System.out.println("solve -> " + solve("-001122"));
+            System.out.println("solve -> " + solve("+001122"));
+            System.out.println("solve -> " + solve(""));
+            System.out.println("solve -> " + solve("+"));
+            System.out.println("solve -> " + solve("-"));
+            System.out.println("solve -> " + solve("+1"));
+            System.out.println("solve -> " + solve("-000000000000000000000000000000000000000000000000001"));
+            System.out.println("solve -> " + solve("000000000000000000000000000011"));
+            System.out.println("solve -> " + solve("+-1"));
+            System.out.println("solve -> " + solve("223"));
+            System.out.println("solve -> " + solve("3.14"));
+            System.out.println("solve -> " + solve("  0000000000012345678"));
+            System.out.println("solve -> " + solve("010"));
+            System.out.println("solve -> " + solve("-000000000000001"));
+            System.out.println("solve -> " + solve("    0000000000000   "));
         }
     }
 }
