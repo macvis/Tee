@@ -401,8 +401,8 @@ public class Subject {
 
     /**
      * ----> 这题没有意义
-     *
-     *
+     * <p>
+     * <p>
      * 请你来实现一个 atoi 函数，使其能将字符串转换成整数。
      * <p>
      * 首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。
@@ -485,8 +485,8 @@ public class Subject {
                 if ("".equals(numStr)) {
                     return 0;
                 }
-                if(possibleBegin.contains(numStr.substring(0, 1))
-                    && (numStr.length() >= 2 && effectiveNumStrs.contains(numStr.substring(1, 2)))){
+                if (possibleBegin.contains(numStr.substring(0, 1))
+                        && (numStr.length() >= 2 && effectiveNumStrs.contains(numStr.substring(1, 2)))) {
                     break;
                 }
             }
@@ -543,6 +543,45 @@ public class Subject {
             System.out.println("solve -> " + solve("010"));
             System.out.println("solve -> " + solve("-000000000000001"));
             System.out.println("solve -> " + solve("    0000000000000   "));
+        }
+    }
+
+    /**
+     * 判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+     * <p>
+     * 输入: 121
+     * 输出: true
+     * <p>
+     * 输入: -121
+     * 输出: false
+     * 解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。
+     * <p>
+     * 输入: 10
+     * 输出: false
+     * 解释: 从右向左读, 为 01 。因此它不是一个回文数。
+     * <p>
+     * 你能不将整数转为字符串来解决这个问题吗？
+     */
+    public static class ConvertPalindrome {
+        public static boolean isPalindrome(int num) {
+            int temp = 0;
+            int sum = 0;
+            temp = num;
+            while (temp > 0){
+                sum = sum * 10 + temp % 10;
+                temp = temp / 10;
+            }
+
+            return sum == num;
+        }
+
+        public static void main(String[] args) {
+            System.out.println("solve -> " + isPalindrome(131));
+            System.out.println("solve -> " + isPalindrome(222));
+            System.out.println("solve -> " + isPalindrome(12345));
+            System.out.println("solve -> " + isPalindrome(199991));
+            System.out.println("solve -> " + isPalindrome(11));
+            System.out.println("solve -> " + isPalindrome(-56765));
         }
     }
 }
