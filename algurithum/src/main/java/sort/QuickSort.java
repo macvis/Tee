@@ -20,7 +20,7 @@ import com.alibaba.fastjson.JSON;
 public class QuickSort {
 
     private static void sort(int[] array, int head, int tail) {
-        if(head > tail){
+        if (head > tail) {
             return;
         }
 
@@ -30,11 +30,11 @@ public class QuickSort {
         int k = tail;
         while (i != k) {
             //因为设置了头部为基准数，则需要从尾部开始遍历
-            while (array[k] >= base && i < k){
+            while (array[k] >= base && i < k) {
                 k--;
             }
 
-            while (array[i] <= base && i < k){
+            while (array[i] <= base && i < k) {
                 i++;
             }
 
@@ -48,7 +48,7 @@ public class QuickSort {
         array[head] = array[i];
         array[i] = base;
 
-        sort(array, head, i -1);
+        sort(array, head, i - 1);
         sort(array, i + 1, tail);
     }
 

@@ -567,7 +567,7 @@ public class Subject {
             int temp = 0;
             int sum = 0;
             temp = num;
-            while (temp > 0){
+            while (temp > 0) {
                 sum = sum * 10 + temp % 10;
                 temp = temp / 10;
             }

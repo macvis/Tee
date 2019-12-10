@@ -22,15 +22,4 @@ public class Apple implements Fruit {
         System.out.println("weigh apple");
     }
 
-
-    //    @Override
-//    public String weigh(int scale) {
-//        this.scale = scale + "";
-//        return this.scale;
-//    }
-//
-//    @Override
-//    public void eat() {
-//        System.out.println("eating apple");
-//    }
-}
+} 

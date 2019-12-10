@@ -9,16 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>tee.javaLearning.spring-5</groupId>
-    <artifactId>spring-5</artifactId>
+    <groupId>tee.javaLearning.concurrency</groupId>
+    <artifactId>concurrency</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <dependencies>
-        <!-- Spring 5 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.0.0.RELEASE</version>
-        </dependency>
-    </dependencies>
+
 
 </project>
