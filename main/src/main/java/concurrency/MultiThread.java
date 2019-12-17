@@ -1,6 +1,9 @@
 package concurrency;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
 import java.util.TreeSet;
+import java.util.concurrent.*;
 
 /**
  * @author youchao.wen
@@ -17,5 +20,9 @@ public class MultiThread {
         ts.add("aa");
 
         System.out.println("ts -> " + ts);
+
+        ExecutorService es = new ThreadPoolExecutor(1, 10, 1000,
+                TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(10),
+                new ThreadFactoryBuilder().setNameFormat("threadName").build());
     }
 }
