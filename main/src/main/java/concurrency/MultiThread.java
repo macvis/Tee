@@ -24,5 +24,9 @@ public class MultiThread {
         ExecutorService es = new ThreadPoolExecutor(1, 10, 1000,
                 TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(10),
                 new ThreadFactoryBuilder().setNameFormat("threadName").build());
+
+        ExecutorService es2 = new ThreadPoolExecutor(1, 20, 1000, TimeUnit.MILLISECONDS,
+               new LinkedBlockingQueue<>(),  new ThreadFactoryBuilder().setNameFormat("name-").build());
+        es2.submit(() -> System.out.println("111"));
     }
 }
