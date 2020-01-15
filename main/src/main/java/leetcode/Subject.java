@@ -1,5 +1,7 @@
 package leetcode;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -582,6 +584,216 @@ public class Subject {
             System.out.println("solve -> " + isPalindrome(199991));
             System.out.println("solve -> " + isPalindrome(11));
             System.out.println("solve -> " + isPalindrome(-56765));
+        }
+    }
+
+    /**
+     * 只出现一次的数字
+     * 使用异或运算解决，算法复杂度O(1)
+     * 异或：
+     * 1 ^ 2 ^ 2 ^ 1 ^ 3 = 3
+     */
+    public static class SingleNumber {
+
+        public static int solve(int[] nums) {
+            int result = nums[0];
+            for (int i = 1; i < nums.length; i++) {
+                result = result ^ nums[i];
+            }
+
+            return result;
+        }
+
+
+        public static void main(String[] args) {
+            System.out.println("结果1 -> " + solve(new int[]{2, 2, 1}));
+            System.out.println("结果2 -> " + solve(new int[]{4, 1, 2, 1, 2}));
+            System.out.println("结果3 -> " + solve(new int[]{2, 5, 6, 5, 2}));
+        }
+    }
+
+    /**
+     * 多数元素
+     * 给定一个大小为 n 的数组，找到其中的多数元素。多数元素是指在数组中出现次数大于 ⌊ n/2 ⌋ 的元素。
+     * 你可以假设数组是非空的，并且给定的数组总是存在多数元素。
+     */
+    public static class MajorityElement {
+        public static int solve(int[] nums) {
+            Map<Integer, Integer> countMap = new HashMap<>(16);
+            int length = nums.length;
+            for (int num : nums) {
+                Integer count = countMap.get(num);
+                if (count == null) {
+                    count = 0;
+                    countMap.put(num, count);
+                } else {
+                    count++;
+                    countMap.put(num, count);
+                }
+            }
+            int targetSize = length / 2;
+            for (HashMap.Entry<Integer, Integer> entry : countMap.entrySet()) {
+                if (entry.getValue() >= targetSize) {
+                    return entry.getKey();
+                }
+            }
+            return -1;
+        }
+
+        public static void main(String[] args) {
+            System.out.println("solve({1,2,1,1,2}) -> " + solve(new int[]{1, 2, 1, 1, 2}));
+            System.out.println("solve({1,2,1,1,2,2,2}) -> " + solve(new int[]{1, 2, 1, 1, 2, 2, 2}));
+        }
+    }
+
+    /**
+     * 编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target。该矩阵具有以下特性：
+     * 每行的元素从左到右升序排列。
+     * 每列的元素从上到下升序排列。
+     * <p>
+     * 示例:
+     * 现有矩阵 matrix 如下：
+     * [
+     * [1,   4,  7, 11, 15],
+     * [2,   5,  8, 12, 19],
+     * [3,   6,  9, 16, 22],
+     * [10, 13, 14, 17, 24],
+     * [18, 21, 23, 26, 30]
+     * ]
+     * 给定 target = 5，返回 true。
+     * 给定 target = 20，返回 false。
+     */
+    public static class SearchMatrix {
+        public static boolean solve(int[][] matrix, int target) {
+            for (int[] array : matrix) {
+                for (int num : array) {
+                    if (num == target) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public static void main(String[] args) {
+            int[][] matrix = new int[5][5];
+            matrix[0] = new int[]{1, 4, 7, 11, 15};
+            matrix[1] = new int[]{2, 5, 8, 12, 19};
+            matrix[2] = new int[]{3, 6, 9, 16, 22};
+            matrix[3] = new int[]{10, 13, 14, 17, 24};
+            matrix[4] = new int[]{18, 21, 23, 26, 30};
+            System.out.println("solve 5 -> " + solve(matrix, 5));
+            System.out.println("solve 20 -> " + solve(matrix, 20));
+        }
+    }
+
+    /**
+     * 给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。
+     * <p>
+     * 说明:
+     * <p>
+     * 初始化 nums1 和 nums2 的元素数量分别为 m 和 n。
+     * 你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
+     * 示例:
+     * <p>
+     * 输入:
+     * nums1 = [1,2,3,0,0,0], m = 3
+     * nums2 = [2,5,6],       n = 3
+     * <p>
+     * 输出: [1,2,2,3,5,6]
+     */
+    public static class MergeArray {
+        public static int[] solve(int[] nums1, int m, int[] nums2, int n) {
+            for (int i = 0; i < nums2.length; i++) {
+                nums1[m + i] = nums2[i];
+            }
+
+            //排序
+            quickSort(nums1);
+            return nums1;
+        }
+
+        private static void quickSort(int[] array) {
+            quickSort(array, 0, array.length - 1);
+        }
+
+        private static void quickSort(int[] src, int begin, int end) {
+            if (begin < end) {
+                int key = src[begin];
+                int i = begin;
+                int j = end;
+                while (i < j) {
+                    while (i < j && src[j] > key) {
+                        j--;
+                    }
+                    if (i < j) {
+                        src[i] = src[j];
+                        i++;
+                    }
+                    while (i < j && src[i] < key) {
+                        i++;
+                    }
+                    if (i < j) {
+                        src[j] = src[i];
+                        j--;
+                    }
+                }
+                src[i] = key;
+                quickSort(src, begin, i - 1);
+                quickSort(src, i + 1, end);
+            }
+        }
+
+        public static void main(String[] args) {
+            int[] arr = solve(new int[]{1, 2, 3, 0, 0, 0}, 3, new int[]{2, 5, 6}, 3);
+            System.out.println("merge [1,2,3,0,0,0] & [2,5,6] -> " + JSON.toJSONString(arr));
+
+            int[] arr2 = new int[]{1, 1, 5, 2, 5, 3, 10, 7};
+            quickSort(arr2);
+            System.out.println("quickSort([1,1,5,2,5,3,10,7]) -> " + JSON.toJSONString(arr2));
+        }
+    }
+
+    /**
+     * 你将获得 K 个鸡蛋，并可以使用一栋从 1 到 N  共有 N 层楼的建筑。
+     * 每个蛋的功能都是一样的，如果一个蛋碎了，你就不能再把它掉下去。
+     * 你知道存在楼层 F ，满足 0 <= F <= N 任何从高于 F 的楼层落下的鸡蛋都会碎，从 F 楼层或比它低的楼层落下的鸡蛋都不会破。
+     * 每次移动，你可以取一个鸡蛋（如果你有完整的鸡蛋）并把它从任一楼层 X 扔下（满足 1 <= X <= N）。
+     * 你的目标是确切地知道 F 的值是多少。
+     * 无论 F 的初始值如何，你确定 F 的值的最小移动次数是多少？
+     * <p>
+     * 示例 1：
+     * 输入：K = 1, N = 2
+     * 输出：2
+     * 解释：
+     * 鸡蛋从 1 楼掉落。如果它碎了，我们肯定知道 F = 0 。
+     * 否则，鸡蛋从 2 楼掉落。如果它碎了，我们肯定知道 F = 1 。
+     * 如果它没碎，那么我们肯定知道 F = 2 。
+     * 因此，在最坏的情况下我们需要移动 2 次以确定 F 是多少。
+     */
+    public static class SuperEggDrop {
+        // TODO: 2020/1/14 理解题目
+    }
+
+    /**
+     * 给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+     * 说明：本题中，我们将空字符串定义为有效的回文串。
+     * <p>
+     * 示例 1:
+     * 输入: "A man, a plan, a canal: Panama"
+     * 输出: true
+     * <p>
+     * 示例 2:
+     * 输入: "race a car"
+     * 输出: false
+     */
+    public static class PalindromeString {
+        private static boolean solve(String str) {
+            return false;
+        }
+
+        public static void main(String[] args) {
         }
     }
 }
