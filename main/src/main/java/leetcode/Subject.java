@@ -2,10 +2,7 @@ package leetcode;
 
 import com.alibaba.fastjson.JSON;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -789,11 +786,207 @@ public class Subject {
      * 输出: false
      */
     public static class PalindromeString {
-        private static boolean solve(String str) {
-            return false;
+        private static boolean solve1(String str) {
+            if (str == null || str.equals("")) {
+                return false;
+            }
+
+            str = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+            System.out.println("replaced -> " + str);
+            int length = str.length();
+            int half = length / 2;
+            int halfIndex = length % 2 == 1 ? half + 1 : half;
+            String pre = str.substring(0, half);
+            String after = str.substring(halfIndex, length);
+
+            System.out.println("pre -> " + pre);
+            System.out.println("after -> " + after);
+
+            String afterReversed = "";
+            for (int i = after.length() - 1; i >= 0; i--) {
+                afterReversed = afterReversed.concat(after.charAt(i) + "");
+            }
+            System.out.println("afterReversed -> " + afterReversed);
+            return pre.equals(afterReversed);
+        }
+
+        private static boolean solve2(String str) {
+            if (str == null || str.equals("")) {
+                return false;
+            }
+
+            str = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+            System.out.println("replaced -> " + str);
+
+            int i = 0;
+            int j = str.length() - 1;
+            while (i < j) {
+                if (str.charAt(i) != str.charAt(j)) {
+                    return false;
+                }
+                i++;
+                j--;
+            }
+
+            return true;
         }
 
         public static void main(String[] args) {
+            System.out.println("is [A man, a plan, a canal: Panama] palindrome ? " + solve2("A man, a plan, a canal: Panama"));
+            System.out.println("\r\n");
+            System.out.println("is [A man, a plan, a canal -- Panama] palindrome ? " + solve2("A man, a plan, a canal -- Panama"));
+            System.out.println("\r\n");
+            System.out.println("is [race a car] palindrome ? " + solve2("race a car"));
+            System.out.println("\r\n");
+            System.out.println("is [aa] palindrome ? " + solve2("aa"));
+            System.out.println("\r\n");
+        }
+    }
+
+    /**
+     * 分割回文串
+     * // TODO: 2020/1/16 有空再做
+     */
+    public static class SplitPalindrome {
+        private static boolean isPalindrome(String str) {
+            if (str == null || str.equals("")) {
+                return false;
+            }
+
+            str = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+            int i = 0;
+            int j = str.length() - 1;
+            while (i < j) {
+                if (str.charAt(i) != str.charAt(j)) {
+                    return false;
+                }
+                i++;
+                j--;
+            }
+
+            return true;
+        }
+
+        private static List<List<String>> solve(String s) {
+            List<List<String>> res = new ArrayList<>();
+            backtrack(res, s, new ArrayList<String>());
+            return res;
+        }
+
+        private static void backtrack(List<List<String>> res, String s, ArrayList<String> tmp) {
+            if (s == null || s.length() == 0) res.add(new ArrayList<>(tmp));
+            for (int i = 1; i <= s.length(); i++) {
+                if (isPalindrome(s.substring(0, i))) {
+                    tmp.add(s.substring(0, i));
+                    backtrack(res, s.substring(i, s.length()), tmp);
+                    tmp.remove(tmp.size() - 1);
+                }
+            }
+        }
+
+        public static void main(String[] args) {
+            System.out.println(JSON.toJSONString(solve("aab")));
+        }
+    }
+
+    /**
+     * 给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，判定 s 是否可以被空格拆分为一个或多个在字典中出现的单词。
+     * 说明：
+     * 拆分时可以重复使用字典中的单词。
+     * 你可以假设字典中没有重复的单词。
+     * <p>
+     * 示例 1：
+     * 输入: s = "leetcode", wordDict = ["leet", "code"]
+     * 输出: true
+     * 解释: 返回 true 因为 "leetcode" 可以被拆分成 "leet code"。
+     * <p>
+     * 示例 2：
+     * 输入: s = "applepenapple", wordDict = ["apple", "pen"]
+     * 输出: true
+     * 解释: 返回 true 因为 "applepenapple" 可以被拆分成 "apple pen apple"。
+     * 注意你可以重复使用字典中的单词。
+     * <p>
+     * 示例 3：
+     * 输入: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+     * 输出: false
+     */
+    public static class WordBreak {
+        private static boolean solve(String s, List<String> wordDict) {
+            return false;
+        }
+    }
+
+    public static class Anagram {
+        private static boolean solve(String s, String t) {
+            //排序之后的新串做比较即可
+            char[] sCharArray = s.toCharArray();
+            Arrays.sort(sCharArray);
+            s = new String(sCharArray);
+
+            char[] tCharArray = t.toCharArray();
+            Arrays.sort(tCharArray);
+            t = new String(tCharArray);
+            return s.equals(t);
+        }
+
+        public static void main(String[] args) {
+            System.out.println("apple equals lappe ? " + solve("apple", "lappe"));
+        }
+    }
+
+    /**
+     * 给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。
+     * <p>
+     * 案例:
+     * s = "leetcode"
+     * 返回 0.
+     * s = "loveleetcode",
+     * 返回 2.
+     * 注意事项：您可以假定该字符串只包含小写字母。
+     */
+    public static class FirstUniqChar {
+        public static int solve(String s) {
+            Map<Character, Integer> countMap = new HashMap<>(16);
+            char[] charArray = s.toCharArray();
+            for (char c : charArray) {
+                Integer count = countMap.get(c);
+                count = count == null ? 0 : count;
+                countMap.put(c, count += 1);
+            }
+
+            for(int i = 0; i < charArray.length; i ++){
+                if(countMap.get(charArray[i]) == 1){
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        public static void main(String[] args) {
+            System.out.println("find uniq char [loveleetcode] index = " + solve("loveleetcode"));
+            System.out.println("find uniq char [leetcode] index = " + solve("leetcode"));
+        }
+    }
+
+    public static class ReverseString{
+        private static void solve(char[] s){
+            int head = 0;
+            int tail = s.length - 1;
+            while (head < tail) {
+                char tmp = s[head];
+                s[head] = s[tail];
+                s[tail] = tmp;
+                head ++;
+                tail --;
+            }
+
+            System.out.println("reversed -> " + JSON.toJSONString(s));
+        }
+
+        public static void main(String[] args) {
+            solve(new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g'});
         }
     }
 }
