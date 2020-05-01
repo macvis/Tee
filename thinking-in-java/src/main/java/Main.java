@@ -11,6 +11,8 @@ public class Main {
 
         new Thread(t1).start();
         new Thread(t2).start();
+
+        new Thread(new task)
     }
 
 }
