@@ -970,6 +970,9 @@ public class Subject {
         }
     }
 
+    /**
+     * 反转字符串
+     */
     public static class ReverseString{
         private static void solve(char[] s){
             int head = 0;

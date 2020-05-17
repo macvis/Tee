@@ -32,6 +32,7 @@
         <module>java-8-in-action</module>
         <module>algurithum</module>
         <module>ali-interview</module>
+        <module>multi-threads-exercise</module>
     </modules>
 
     <properties>
