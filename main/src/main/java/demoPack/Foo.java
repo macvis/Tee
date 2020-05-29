@@ -3,7 +3,6 @@ package demoPack;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
 import java.security.KeyFactory;
@@ -12,6 +11,7 @@ import java.security.Signature;
 import java.security.spec.X509EncodedKeySpec;
 import java.sql.Timestamp;
 import java.util.Map;
+import java.util.Random;
 import java.util.TreeMap;
 import java.util.concurrent.*;
 
@@ -21,44 +21,19 @@ import java.util.concurrent.*;
 public class Foo {
 
     public static void main(String[] args) {
-        String str = "验证码;10010,70010,61130,80010,50011,1562764215\n" +
-                "|营销;61248,02062,80011,50010,1537916088\n" +
-                "|通知;61414,1537914871\n" +
-                "|行业;120397";
-        str = StringUtils.remove(str, "\n");
-        System.out.println("str.indexOf(|)" + str.indexOf("|"));
-
-        MessageTemplate[] templates = MessageTemplate.values();
-        for (MessageTemplate template : templates) {
-            System.out.println(template.getVal2() + "--------" + template.getVal3());
+        for (int i = 0; i < 1000000; i++) {
+            try {
+                int ran = new Random().nextInt(Integer.MAX_VALUE);
+                System.out.println("ran -> " + ran);
+                if (i == 999999) {
+                    System.out.println("finish");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("i = " + i);
+                break;
+            }
         }
-
-        long l1 = 1584942103000L - 1584325020000L;
-        long l2 = l1 / 24 / 60 / 60 / 1000;
-        System.out.println("l2=" + l2);
-
-        char grade = 'C';
-
-        switch(grade)
-        {
-            case 'A' :
-                System.out.println("优秀");
-                break;
-            case 'B' :
-            case 'C' :
-                System.out.println("良好");
-                break;
-            case 'D' :
-                System.out.println("及格");
-                break;
-            case 'F' :
-                System.out.println("你需要再努力努力");
-                break;
-            default :
-                System.out.println("未知等级");
-        }
-        System.out.println("你的等级是 " + grade);
-
     }
 
     public static boolean verify(byte[] data, String publicKey, String sign)
