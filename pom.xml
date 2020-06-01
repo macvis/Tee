@@ -33,6 +33,7 @@
         <module>algurithum</module>
         <module>ali-interview</module>
         <module>multi-threads-exercise</module>
+        <module>leetcode</module>
     </modules>
 
     <properties>

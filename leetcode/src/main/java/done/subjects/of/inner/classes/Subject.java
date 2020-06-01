@@ -1,4 +1,4 @@
-package leetcode;
+package done.subjects.of.inner.classes;
 
 import com.alibaba.fastjson.JSON;
 
