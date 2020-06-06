@@ -220,7 +220,7 @@ public class StandaloneJvmMultiThreadExercises {
                     synchronized (lock) {
                         try {
                             index--;
-                            System.out.println("thread 3 subtracted => " + index);
+                            System.out.println("thread 4 subtracted => " + index);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

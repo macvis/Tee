@@ -90,6 +90,6 @@ public class Subject10MatchRegularExp {
      * 也让我们可以将中间结果进行保存。
      */
     private static boolean matchByDynamicProgram(String str, String pattern){
-
+        return false;
     }
 }

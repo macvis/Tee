@@ -1,6 +1,7 @@
 package subject1;
 
-import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 题目1：
@@ -17,51 +18,24 @@ public class Subject1 {
 
     static class PrintAlibaba {
         public void print() {
-            Thread threadA = new Thread(new TaskA());
-            Thread threadLi = new Thread(new TaskLi());
-            Thread threadBa1 = new Thread(new TaskBa1());
-            Thread threadBa2 = new Thread(new TaskBa2());
+            ExecutorService single = Executors.newFixedThreadPool(1);
             for (int i = 0; i < 10; i++) {
-                threadA.start();
-                threadLi.start();
-                threadBa1.start();
-                threadBa2.start();
+                single.submit(new Task("阿"));
+                single.submit(new Task("里"));
+                single.submit(new Task("巴"));
+                single.submit(new Task("巴"));
             }
         }
 
-        class TaskA implements Runnable {
-            CyclicBarrier barrier;
-
-            public TaskA() {
+        class Task implements Runnable {
+            private String print;
+            public Task(String print) {
+                this.print = print;
             }
 
             @Override
             public void run() {
-                System.out.print("阿");
-            }
-        }
-
-        class TaskLi implements Runnable {
-
-            @Override
-            public void run() {
-                System.out.print("里");
-            }
-        }
-
-        class TaskBa1 implements Runnable {
-
-            @Override
-            public void run() {
-                System.out.print("巴");
-            }
-        }
-
-        class TaskBa2 implements Runnable {
-
-            @Override
-            public void run() {
-                System.out.print("巴");
+                    System.out.print(print);
             }
         }
     }
