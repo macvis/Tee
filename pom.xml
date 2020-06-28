@@ -35,6 +35,7 @@
         <module>multi-threads-exercise</module>
         <module>leetcode</module>
         <module>huawei-interview</module>
+        <module>dubbo-spi</module>
     </modules>
 
     <properties>
