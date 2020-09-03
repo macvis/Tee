@@ -1,8 +1,10 @@
+import lombok.Data;
 
 /**
  * @author youchao.wen
  * @date 2017/8/18.
  */
+@Data
 public class Tickets {
 
     private static ThreadLocal<Integer> TL = new ThreadLocal<Integer>() {

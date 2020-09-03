@@ -11,7 +11,7 @@ import org.apache.rocketmq.common.message.Message;
  */
 public class QuickProducerStarter {
     @lombok.SneakyThrows
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         DefaultMQProducer producer = new DefaultMQProducer("demo");
         producer.setNamesrvAddr("demo address");
         producer.start();
