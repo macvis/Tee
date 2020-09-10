@@ -1,7 +1,5 @@
 package demoPack;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.apache.commons.codec.binary.Base64;
 
 import java.math.BigDecimal;
@@ -34,6 +32,8 @@ public class Foo {
                 break;
             }
         }
+
+        System.out.println(Integer.toBinaryString(Float.floatToIntBits(16.35F)));
     }
 
     public static boolean verify(byte[] data, String publicKey, String sign)
@@ -169,118 +169,118 @@ public class Foo {
             return null;
         }
     }
-
-    @AllArgsConstructor
-    @Getter
-    enum MessageTemplate {
-        /**
-         * 账号冻结申诉人工审核通过
-         */
-        ACCOUNT_FREEZE_AUDIT_PASS("accountFreezeAuditPass", "账号冻结申诉人工审核通过",
-                "您在【账号冻结申诉审核】环节提交的资料已通过人工审核，详情可登录网易支付电脑端查询。"),
-        ACCOUNT_FREEZE_AUDIT_UNTREAD("accountFreezeAuditUntread", "账号冻结申诉人工审核待资料补充",
-                "您在【账号冻结申诉审核】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
-        ACCOUNT_FREEZE_AUDIT_NOPASS("accountFreezeAuditNoPass", "账号冻结申诉人工审核不通过",
-                "您在【账号冻结申诉审核】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端查询。"),
-
-        ANTIMONEY_LAUDRYING_AUDIT_PASS("antiMoneyLaudryingAuditPass", "反洗钱人工审核通过",
-                "您在【身份信息审核】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        ANTIMONEY_LAUDRYING_AUDIT_UNTREAD("antiMoneyLaudryingAuditUntread", "反洗钱人工审核待资料补充",
-                "您在【身份信息审核】环节提交的资料需要完善，请于【%s】前登录网易支付电脑-进度中心端完善资料。"),
-        ANTIMONEY_LAUDRYING_AUDIT_NOPASS("antiMoneyLaudryingAuditNoPass", "反洗钱人工审核不通过",
-                "您在【身份信息审核】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-
-        RISK_AUDIT_PASS("riskAuditPass", "风控人工审核通过",
-                "您在【风控审核】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        RISK_AUDIT_UNTREAD("riskAuditUntread", "风控人工审核待资料补充",
-                "您在【风控审核】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
-        RISK_AUDIT_FACE_RECOGNITION("riskAuditFaceRecognition", "风控人工审核待人脸验证",
-                "您在【风控审核】环节提交的解除账户风险申请，需要您前往网易支付APP-我的-设置-安全设置-人脸识别进行人脸验证操作。"),
-        RISK_AUDIT_NOPASS("riskAuditNoPass", "风控人工审核不通过",
-                "您在【风控审核】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-
-        REGISTER_ACTIVATION_AUDIT_PASS("registerActivationAuditPass", "注册激活审核通过",
-                "您在【注册】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        REGISTER_ACTIVATION_AUDIT_UNTREAD("registerActivationAuditUntread", "注册激活审核待资料补充",
-                "您在【注册】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
-        REGISTER_ACTIVATION_AUDIT_NOPASS("registerActivationAuditNoPass", "注册激活审核不通过",
-                "您在【注册】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-
-        REALNAME_CHANGE_AUDIT_PASS("realnameChangeAuditPass", "实名认证审核通过",
-                "您的网易支付账户已通过实名认证人工审核，请登录网易支付电脑端查看。"),
-        REALNAME_CHANGE_AUDIT_UNTREAD("realnameChangeAuditUntread", "实名认证审核待资料补充",
-                "您在【实名认证】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
-        REALNAME_CHANGE_AUDIT_NOPASS("realnameChangeAuditNoPass", "实名认证审核不通过",
-                "您的网易支付账户未通过实名认证人工审核，请登录网易支付电脑端查看。"),
-
-        BALANCETRANS_ABNORMAL_AUDIT_PASS("balanceTransAbnormalAuditPass", "余额异常审核通过",
-                "您在【余额异常信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        BALANCETRANS_ABNORMAL_AUDIT_UNTREAD("balanceTransAbnormalAuditUntread", "余额异常审核待资料补充",
-                "您在【余额异常信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
-        BALANCETRANS_ABNORMAL_AUDIT_NOPASS("balanceTransAbnormalAuditNoPass", "余额异常审核不通过",
-                "您在【余额异常信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-
-        BANKTRANS_ABNORMAL_AUDIT_PASS("bankTransAbnormalAuditPass", "银行异常审核通过",
-                "您在【银行异常信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        BANKTRANS_ABNORMAL_AUDIT_UNTREAD("bankTransAbnormalAuditUntread", "银行异常审核待资料补充",
-                "您在【银行异常信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
-        BANKTRANS_ABNORMAL_AUDIT_NOPASS("bankTransAbnormalAuditNoPass", "银行异常审核不通过",
-                "您在【银行异常信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-
-        DOUBLE_ACCOUNT_AUDIT_INIT("doubleAccountAuditInit", "双户口二选一审核发起",
-                "您在【身份信息申诉】环节提交的资料已发起人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        DOUBLE_ACCOUNT_AUDIT_PASS("doubleAccountAuditPass", "双户口二选一审核通过",
-                "您在【身份信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        DOUBLE_ACCOUNT_AUDIT_UNTREAD("doubleAccountAuditUntread", "双户口二选一审核待资料补充",
-                "您在【身份信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
-        DOUBLE_ACCOUNT_AUDIT_NOPASS("doubleAccountAuditNoPass", "双户口二选一审核不通过",
-                "您在【身份信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-
-        EMIGRATION_AUDIT_INIT("emigrationAuditInit", "移居海外审核发起",
-                "您在【身份信息申诉】环节提交的资料已发起人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        EMIGRATION_AUDIT_PASS("emigrationAuditPass", "移居海外审核通过",
-                "您在【身份信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        EMIGRATION_AUDIT_UNTREAD("emigrationAuditUntread", "移居海外审核待资料补充",
-                "您在【身份信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
-        EMIGRATION_AUDIT_NOPASS("emigrationAuditNoPass", "移居海外审核不通过",
-                "您在【身份信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-
-        MODIFYNAME_AUDIT_INIT("modifynameAuditInit", "姓名修正审核发起",
-                "您在【身份信息申诉】环节提交的资料已发起人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        MODIFYNAME_AUDIT_PASS("modifyNameAuditPass", "姓名修正审核通过",
-                "您在【身份信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        MODIFYNAME_AUDIT_UNTREAD("modifyNameAuditUntread", "姓名修正审核待资料补充",
-                "您在【身份信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
-        MODIFYNAME_AUDIT_NOPASS("modifyNameAuditNoPass", "姓名修正审核不通过",
-                "您在【身份信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-
-        NAME_USED_BEFORE_AUDIT_INIT("nameUsedBeforeAuditInit", "曾用名修正审核发起",
-                "您在【身份信息申诉】环节提交的资料已发起人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        NAME_USED_BEFORE_AUDIT_PASS("nameUsedBeforeAuditPass", "曾用名修正审核通过",
-                "您在【身份信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        NAME_USED_BEFORE_AUDIT_UNTREAD("nameUsedBeforeAuditUntread", "曾用名修正审核待资料补充",
-                "您在【身份信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
-        NAME_USED_BEFORE_AUDIT_NOPASS("nameUsedBeforeAuditNoPass", "曾用名修正审核不通过",
-                "您在【身份信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-
-        QUICKPAY_ABNORMAL_AUDIT_PASS("quickPayAbnormalAuditPass", "快捷支付异常审核通过",
-                "您在【快捷支付异常】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        QUICKPAY_ABNORMAL_AUDIT_UNTREAD("quickPayAbnormalAuditUntread", "快捷支付异常审核待资料补充",
-                "您在【快捷支付异常】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
-        QUICKPAY_ABNORMAL_AUDIT_NOPASS("quickPayAbnormalAuditNoPass", "快捷支付异常审核不通过",
-                "您在【快捷支付异常】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-
-        OTHER_IDENTITY_SUBMITED("otherIdentityAuditSubmited", "其他信息申诉审核提交成功",
-                "您在【身份信息申诉】环节提交的资料已提交成功，详情可登录网易支付电脑端-进度中心查询。"),
-        OTHER_IDENTITY_PASS("otherIdentityAuditPass", "其他信息申诉审核通过",
-                "您在【身份信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
-        OTHER_IDENTITY_AUDIT_UNTREAD("otherIdentityAuditUntread", "其他信息申诉审核待资料补充",
-                "您在【身份信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
-        OTHER_IDENTITY_AUDIT_NOPASS("otherIdentityAuditNoPass", "其他信息申诉审核不通过",
-                "您在【身份信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。");
-
-        private String val1;
-        private String val2;
-        private String val3;
-    }
+//
+//    @AllArgsConstructor
+//    @Getter
+//    enum MessageTemplate {
+//        /**
+//         * 账号冻结申诉人工审核通过
+//         */
+//        ACCOUNT_FREEZE_AUDIT_PASS("accountFreezeAuditPass", "账号冻结申诉人工审核通过",
+//                "您在【账号冻结申诉审核】环节提交的资料已通过人工审核，详情可登录网易支付电脑端查询。"),
+//        ACCOUNT_FREEZE_AUDIT_UNTREAD("accountFreezeAuditUntread", "账号冻结申诉人工审核待资料补充",
+//                "您在【账号冻结申诉审核】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
+//        ACCOUNT_FREEZE_AUDIT_NOPASS("accountFreezeAuditNoPass", "账号冻结申诉人工审核不通过",
+//                "您在【账号冻结申诉审核】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端查询。"),
+//
+//        ANTIMONEY_LAUDRYING_AUDIT_PASS("antiMoneyLaudryingAuditPass", "反洗钱人工审核通过",
+//                "您在【身份信息审核】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        ANTIMONEY_LAUDRYING_AUDIT_UNTREAD("antiMoneyLaudryingAuditUntread", "反洗钱人工审核待资料补充",
+//                "您在【身份信息审核】环节提交的资料需要完善，请于【%s】前登录网易支付电脑-进度中心端完善资料。"),
+//        ANTIMONEY_LAUDRYING_AUDIT_NOPASS("antiMoneyLaudryingAuditNoPass", "反洗钱人工审核不通过",
+//                "您在【身份信息审核】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//
+//        RISK_AUDIT_PASS("riskAuditPass", "风控人工审核通过",
+//                "您在【风控审核】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        RISK_AUDIT_UNTREAD("riskAuditUntread", "风控人工审核待资料补充",
+//                "您在【风控审核】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
+//        RISK_AUDIT_FACE_RECOGNITION("riskAuditFaceRecognition", "风控人工审核待人脸验证",
+//                "您在【风控审核】环节提交的解除账户风险申请，需要您前往网易支付APP-我的-设置-安全设置-人脸识别进行人脸验证操作。"),
+//        RISK_AUDIT_NOPASS("riskAuditNoPass", "风控人工审核不通过",
+//                "您在【风控审核】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//
+//        REGISTER_ACTIVATION_AUDIT_PASS("registerActivationAuditPass", "注册激活审核通过",
+//                "您在【注册】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        REGISTER_ACTIVATION_AUDIT_UNTREAD("registerActivationAuditUntread", "注册激活审核待资料补充",
+//                "您在【注册】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
+//        REGISTER_ACTIVATION_AUDIT_NOPASS("registerActivationAuditNoPass", "注册激活审核不通过",
+//                "您在【注册】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//
+//        REALNAME_CHANGE_AUDIT_PASS("realnameChangeAuditPass", "实名认证审核通过",
+//                "您的网易支付账户已通过实名认证人工审核，请登录网易支付电脑端查看。"),
+//        REALNAME_CHANGE_AUDIT_UNTREAD("realnameChangeAuditUntread", "实名认证审核待资料补充",
+//                "您在【实名认证】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
+//        REALNAME_CHANGE_AUDIT_NOPASS("realnameChangeAuditNoPass", "实名认证审核不通过",
+//                "您的网易支付账户未通过实名认证人工审核，请登录网易支付电脑端查看。"),
+//
+//        BALANCETRANS_ABNORMAL_AUDIT_PASS("balanceTransAbnormalAuditPass", "余额异常审核通过",
+//                "您在【余额异常信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        BALANCETRANS_ABNORMAL_AUDIT_UNTREAD("balanceTransAbnormalAuditUntread", "余额异常审核待资料补充",
+//                "您在【余额异常信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
+//        BALANCETRANS_ABNORMAL_AUDIT_NOPASS("balanceTransAbnormalAuditNoPass", "余额异常审核不通过",
+//                "您在【余额异常信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//
+//        BANKTRANS_ABNORMAL_AUDIT_PASS("bankTransAbnormalAuditPass", "银行异常审核通过",
+//                "您在【银行异常信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        BANKTRANS_ABNORMAL_AUDIT_UNTREAD("bankTransAbnormalAuditUntread", "银行异常审核待资料补充",
+//                "您在【银行异常信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
+//        BANKTRANS_ABNORMAL_AUDIT_NOPASS("bankTransAbnormalAuditNoPass", "银行异常审核不通过",
+//                "您在【银行异常信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//
+//        DOUBLE_ACCOUNT_AUDIT_INIT("doubleAccountAuditInit", "双户口二选一审核发起",
+//                "您在【身份信息申诉】环节提交的资料已发起人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        DOUBLE_ACCOUNT_AUDIT_PASS("doubleAccountAuditPass", "双户口二选一审核通过",
+//                "您在【身份信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        DOUBLE_ACCOUNT_AUDIT_UNTREAD("doubleAccountAuditUntread", "双户口二选一审核待资料补充",
+//                "您在【身份信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
+//        DOUBLE_ACCOUNT_AUDIT_NOPASS("doubleAccountAuditNoPass", "双户口二选一审核不通过",
+//                "您在【身份信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//
+//        EMIGRATION_AUDIT_INIT("emigrationAuditInit", "移居海外审核发起",
+//                "您在【身份信息申诉】环节提交的资料已发起人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        EMIGRATION_AUDIT_PASS("emigrationAuditPass", "移居海外审核通过",
+//                "您在【身份信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        EMIGRATION_AUDIT_UNTREAD("emigrationAuditUntread", "移居海外审核待资料补充",
+//                "您在【身份信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
+//        EMIGRATION_AUDIT_NOPASS("emigrationAuditNoPass", "移居海外审核不通过",
+//                "您在【身份信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//
+//        MODIFYNAME_AUDIT_INIT("modifynameAuditInit", "姓名修正审核发起",
+//                "您在【身份信息申诉】环节提交的资料已发起人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        MODIFYNAME_AUDIT_PASS("modifyNameAuditPass", "姓名修正审核通过",
+//                "您在【身份信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        MODIFYNAME_AUDIT_UNTREAD("modifyNameAuditUntread", "姓名修正审核待资料补充",
+//                "您在【身份信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
+//        MODIFYNAME_AUDIT_NOPASS("modifyNameAuditNoPass", "姓名修正审核不通过",
+//                "您在【身份信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//
+//        NAME_USED_BEFORE_AUDIT_INIT("nameUsedBeforeAuditInit", "曾用名修正审核发起",
+//                "您在【身份信息申诉】环节提交的资料已发起人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        NAME_USED_BEFORE_AUDIT_PASS("nameUsedBeforeAuditPass", "曾用名修正审核通过",
+//                "您在【身份信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        NAME_USED_BEFORE_AUDIT_UNTREAD("nameUsedBeforeAuditUntread", "曾用名修正审核待资料补充",
+//                "您在【身份信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
+//        NAME_USED_BEFORE_AUDIT_NOPASS("nameUsedBeforeAuditNoPass", "曾用名修正审核不通过",
+//                "您在【身份信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//
+//        QUICKPAY_ABNORMAL_AUDIT_PASS("quickPayAbnormalAuditPass", "快捷支付异常审核通过",
+//                "您在【快捷支付异常】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        QUICKPAY_ABNORMAL_AUDIT_UNTREAD("quickPayAbnormalAuditUntread", "快捷支付异常审核待资料补充",
+//                "您在【快捷支付异常】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
+//        QUICKPAY_ABNORMAL_AUDIT_NOPASS("quickPayAbnormalAuditNoPass", "快捷支付异常审核不通过",
+//                "您在【快捷支付异常】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//
+//        OTHER_IDENTITY_SUBMITED("otherIdentityAuditSubmited", "其他信息申诉审核提交成功",
+//                "您在【身份信息申诉】环节提交的资料已提交成功，详情可登录网易支付电脑端-进度中心查询。"),
+//        OTHER_IDENTITY_PASS("otherIdentityAuditPass", "其他信息申诉审核通过",
+//                "您在【身份信息申诉】环节提交的资料已通过人工审核，详情可登录网易支付电脑端-进度中心查询。"),
+//        OTHER_IDENTITY_AUDIT_UNTREAD("otherIdentityAuditUntread", "其他信息申诉审核待资料补充",
+//                "您在【身份信息申诉】环节提交的资料需要完善，请于【%s】前登录网易支付电脑端-进度中心完善资料。"),
+//        OTHER_IDENTITY_AUDIT_NOPASS("otherIdentityAuditNoPass", "其他信息申诉审核不通过",
+//                "您在【身份信息申诉】环节提交的资料未能通过人工审核，详情可登录网易支付电脑端-进度中心查询。");
+//
+//        private String val1;
+//        private String val2;
+//        private String val3;
+//    }
 }
