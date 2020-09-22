@@ -8,9 +8,7 @@ import java.security.PublicKey;
 import java.security.Signature;
 import java.security.spec.X509EncodedKeySpec;
 import java.sql.Timestamp;
-import java.util.Map;
-import java.util.Random;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.concurrent.*;
 
 /**
@@ -67,6 +65,9 @@ public class Foo {
             String value = itemList[1];
             resultMap.put(key, value);
         }
+
+        List<String> strList = Arrays.asList(Optional.of(strs).orElse(new String[]{}));
+
         return resultMap;
     }
 
