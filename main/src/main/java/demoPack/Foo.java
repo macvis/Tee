@@ -63,7 +63,7 @@ public class Foo {
             String[] itemList = item.split(slaveSplit);
             String key = itemList[0];
             String value = itemList[1];
-            resultMap.put(key, value);
+            resultMap.put(key,Ob value);
         }
 
         List<String> strList = Arrays.asList(Optional.of(strs).orElse(new String[]{}));

@@ -36,6 +36,8 @@
         <module>leetcode</module>
         <module>huawei-interview</module>
         <module>dubbo-spi</module>
+        <module>redisson</module>
+        <module>netty-learning</module>
     </modules>
 
     <properties>
@@ -198,6 +200,20 @@
             <groupId>org.apache.rocketmq</groupId>
             <artifactId>rocketmq-client</artifactId>
             <version>4.6.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.3.2</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.0.36.Final</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

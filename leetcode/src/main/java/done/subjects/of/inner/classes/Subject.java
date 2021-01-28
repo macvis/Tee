@@ -202,6 +202,16 @@ public class Subject {
             return maxLen;
         }
 
+        private static final String LOCK_SCRIPT =
+                "if redis.call('exists', KEYS[2]) == 1 " +
+                        "then ARGV[2] = math.floor(redis.call('get', KEYS[2]) + 10) end " +
+                        "if redis.call('exists', KEYS[1]) == 0 " +
+                        "then local t = redis.call('set', KEYS[1], ARGV[1], 'EX', ARGV[2]) " +
+                        "for k, v in pairs(t) do " +
+                        "if v == 'OK' then return tonumber(ARGV[2]) end " +
+                        "end " +
+                        "return 0 end";
+
         public static boolean noneRepeat(String str) {
             char[] chars = str.toCharArray();
 
