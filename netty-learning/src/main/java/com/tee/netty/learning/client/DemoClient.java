@@ -26,6 +26,7 @@ public class DemoClient {
                     .group(group)
                     .channel(NioSocketChannel.class)
                     .option(ChannelOption.TCP_NODELAY, true)
+                    .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 3000)
                     .handler(new ClientHandler());
 
             //使用channelFuture来接接收来自服务端的数据
