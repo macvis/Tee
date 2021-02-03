@@ -71,5 +71,6 @@ public class Subject15Find3ElementsSumEqualsZero {
 
     public static void main(String[] args) {
         System.out.println(solve(new int[]{-1, 0, 1, 2, -1, -4}));
+        System.out.println(solve(new int[]{-2, -1, 3, 1, -1, 0, -3, -2, 5}));
     }
 }
